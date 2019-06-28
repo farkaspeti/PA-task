@@ -20,7 +20,7 @@ public final class WebappContextListener implements ServletContextListener {
     public void contextInitialized(ServletContextEvent sce) {
         registerCharacterEncodingFilter(sce);
         DataSource dataSource = putDataSourceToServletContext(sce);
-        runDatabaseInitScript(dataSource, "/init.sql");
+        runDatabaseInitScript(dataSource, "/blog_init.sql");
     }
 
     private void registerCharacterEncodingFilter(ServletContextEvent sce) {
