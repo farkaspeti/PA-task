@@ -4,10 +4,8 @@ import com.codecool.web.dao.UserDao;
 import com.codecool.web.model.User;
 import com.codecool.web.model.enums.UserType;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class DatabaseUserDao extends AbstractDao implements UserDao {
@@ -55,7 +53,15 @@ public class DatabaseUserDao extends AbstractDao implements UserDao {
     
     @Override
     public List<User> findAll() throws SQLException {
-        return null;
+        List<User> userList = new ArrayList<>();
+        String sql = "SELECT * FROM users order by user_id";
+        try (Statement statement = connection.createStatement();
+             ResultSet resultSet = statement.executeQuery(sql)) {
+            while (resultSet.next()) {
+                userList.add(fetchUser(resultSet));
+            }
+        }
+        return userList;
     }
     
     private User fetchUser(ResultSet resultSet) throws SQLException {
