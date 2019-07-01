@@ -1,6 +1,7 @@
 package com.codecool.web.model;
 
 import java.util.Objects;
+import com.codecool.web.model.enums.UserType;
 
 public final class User extends AbstractModel {
 
