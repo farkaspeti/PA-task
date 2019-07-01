@@ -3,7 +3,7 @@ package com.codecool.web.model;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-public class Comment extends AbstractModel {
+public final class Comment extends AbstractModel {
     private final int postId;
     private final int userId;
     private final String commentText;
