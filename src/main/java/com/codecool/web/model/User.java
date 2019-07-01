@@ -6,21 +6,39 @@ public final class User extends AbstractModel {
 
     private final String email;
     private final String password;
-
-    public User(int id, String email, String password) {
+    private final String firstName;
+    private final String lastName;
+    private final UserType userType;
+    
+    public User(int id, String email, String password, String firstName, String lastName, UserType userType) {
         super(id);
         this.email = email;
         this.password = password;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.userType = userType;
     }
-
+    
     public String getEmail() {
         return email;
     }
-
+    
     public String getPassword() {
         return password;
     }
-
+    
+    public String getFirstName() {
+        return firstName;
+    }
+    
+    public String getLastName() {
+        return lastName;
+    }
+    
+    public UserType getUserType() {
+        return userType;
+    }
+    
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
