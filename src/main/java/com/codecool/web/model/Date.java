@@ -3,7 +3,7 @@ package com.codecool.web.model;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-public final class Date {
+public class Date {
     
     public String formatDate() {
         LocalDateTime dateObj = LocalDateTime.now();
