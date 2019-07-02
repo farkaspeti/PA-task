@@ -12,7 +12,9 @@ import java.util.List;
 
 public class DatabaseCommentDao extends AbstractDao implements CommentDao {
     
-    public DatabaseCommentDao(Connection connection) { super(connection); }
+    public DatabaseCommentDao(Connection connection) {
+        super(connection);
+    }
     
     @Override
     public Post findById(int commentId) throws SQLException {
@@ -51,5 +53,14 @@ public class DatabaseCommentDao extends AbstractDao implements CommentDao {
     @Override
     public List<Comment> findAllByPostId(int postId) throws SQLException {
         return null;
+    }
+    
+    private Comment fetchComment(ResultSet resultSet) throws SQLException {
+        int id = resultSet.getInt("comment_id");
+        int postId = resultSet.getInt("post_id");
+        int userId = resultSet.getInt("user_id");
+        String commentText = resultSet.getString("comment_text");
+        String commentDate = resultSet.getString("comment_date");
+        return new Comment(id, postId, userId, commentText, commentDate);
     }
 }
