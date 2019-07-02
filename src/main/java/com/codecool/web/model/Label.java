@@ -1,6 +1,6 @@
 package com.codecool.web.model;
 
-public final class Label extends AbstractModel{
+public final class Label extends AbstractModel {
     
     private final String labelContent;
     

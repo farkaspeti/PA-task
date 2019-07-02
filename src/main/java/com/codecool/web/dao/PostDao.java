@@ -6,7 +6,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 public interface PostDao {
-
+    
     List<Post> findAll() throws SQLException;
     
     Post findById(int postId) throws SQLException;

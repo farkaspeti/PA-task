@@ -16,7 +16,7 @@ public final class Comment extends AbstractModel {
         this.commentText = commentText;
         LocalDateTime dateObj = LocalDateTime.now();
         DateTimeFormatter dateForm = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
-    
+        
         String finalDate = dateObj.format(dateForm);
         this.commentDate = finalDate;
     }

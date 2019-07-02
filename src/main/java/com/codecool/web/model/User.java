@@ -1,10 +1,11 @@
 package com.codecool.web.model;
 
 import java.util.Objects;
+
 import com.codecool.web.model.enums.UserType;
 
 public final class User extends AbstractModel {
-
+    
     private final String email;
     private final String password;
     private final String firstName;
@@ -47,9 +48,9 @@ public final class User extends AbstractModel {
         if (!super.equals(o)) return false;
         User user = (User) o;
         return Objects.equals(email, user.email) &&
-            Objects.equals(password, user.password);
+                Objects.equals(password, user.password);
     }
-
+    
     @Override
     public int hashCode() {
         return Objects.hash(super.hashCode(), email, password);
