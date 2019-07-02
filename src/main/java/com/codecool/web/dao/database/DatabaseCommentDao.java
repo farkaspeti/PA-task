@@ -98,7 +98,16 @@ public class DatabaseCommentDao extends AbstractDao implements CommentDao {
     
     @Override
     public List<Comment> findAllByPostId(int postId) throws SQLException {
-        return null;
+        List<Comment> commentList = new ArrayList<>();
+        String sql = "SELECT * FROM comments WHERE post_id = ? ORDER BY comment_id";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+            preparedStatement.setInt(1, postId);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                commentList.add(fetchComment(resultSet));
+            }
+        }
+        return commentList;
     }
     
     private Comment fetchComment(ResultSet resultSet) throws SQLException {
