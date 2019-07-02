@@ -54,7 +54,7 @@ public class DatabaseUserDao extends AbstractDao implements UserDao {
     @Override
     public List<User> findAll() throws SQLException {
         List<User> userList = new ArrayList<>();
-        String sql = "SELECT * FROM users order by user_id";
+        String sql = "SELECT * FROM users ORDER BY user_id";
         try (Statement statement = connection.createStatement();
              ResultSet resultSet = statement.executeQuery(sql)) {
             while (resultSet.next()) {

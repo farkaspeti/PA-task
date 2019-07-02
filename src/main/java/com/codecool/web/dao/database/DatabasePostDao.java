@@ -3,10 +3,7 @@ package com.codecool.web.dao.database;
 import com.codecool.web.dao.PostDao;
 import com.codecool.web.model.Post;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,7 +14,7 @@ public class DatabasePostDao extends AbstractDao implements PostDao {
     @Override
     public List<Post> findAll() throws SQLException {
         List<Post> postList = new ArrayList<>();
-        String sql = "SELECT * FROM posts order by post_id";
+        String sql = "SELECT * FROM posts ORDER BY post_id";
         try (Statement statement = connection.createStatement();
              ResultSet resultSet = statement.executeQuery(sql)) {
             while (resultSet.next()) {
@@ -30,6 +27,15 @@ public class DatabasePostDao extends AbstractDao implements PostDao {
     
     @Override
     public Post findById(int postId) throws SQLException {
+        String sql = "SELECT * FROM posts WHERE post_id = ?";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+            preparedStatement.setInt(1, postId);
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                if (resultSet.next()) {
+                    return fetchPost(resultSet);
+                }
+            }
+        }
         return null;
     }
     
