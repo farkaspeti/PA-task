@@ -67,7 +67,18 @@ public class DatabaseCommentDao extends AbstractDao implements CommentDao {
     
     @Override
     public void delete(int commentId) throws SQLException {
-    
+        boolean autoCommit = connection.getAutoCommit();
+        connection.setAutoCommit(false);
+        String sqlString = "DELETE FROM comments cascade WHERE comment_id = ?";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(sqlString)) {
+            preparedStatement.setInt(1, commentId);
+            preparedStatement.execute();
+        } catch (SQLException ex) {
+            connection.rollback();
+            throw ex;
+        } finally {
+            connection.setAutoCommit(autoCommit);
+        }
     }
     
     @Override
