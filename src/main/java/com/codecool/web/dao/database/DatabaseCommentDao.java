@@ -5,6 +5,7 @@ import com.codecool.web.model.Comment;
 import com.codecool.web.model.Post;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class DatabaseCommentDao extends AbstractDao implements CommentDao {
@@ -83,7 +84,16 @@ public class DatabaseCommentDao extends AbstractDao implements CommentDao {
     
     @Override
     public List<Comment> findAllByUserId(int userId) throws SQLException {
-        return null;
+        List<Comment> commentList = new ArrayList<>();
+        String sql = "SELECT * FROM comments WHERE user_id = ? ORDER BY comment_id";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+            preparedStatement.setInt(1, userId);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                commentList.add(fetchComment(resultSet));
+            }
+        }
+        return commentList;
     }
     
     @Override
