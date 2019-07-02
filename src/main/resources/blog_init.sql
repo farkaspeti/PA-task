@@ -59,9 +59,9 @@ CREATE TABLE posts_logs(
 
 CREATE OR REPLACE FUNCTION posts_function() RETURNS trigger AS '  
     BEGIN
-     	INSERT INTO posts_logs(post_id, content) VALUES (new.post_id,new.content);
-	INSERT INTO labels_posts(post_id) VALUES (new.post_id);
-	RETURN null;
+        INSERT INTO posts_logs(post_id, content) VALUES (new.post_id,new.content);
+        INSERT INTO labels_posts(post_id) VALUES (new.post_id);
+    RETURN null;
     END
 ' LANGUAGE plpgsql;
 

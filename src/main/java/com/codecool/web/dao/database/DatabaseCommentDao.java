@@ -49,12 +49,24 @@ public class DatabaseCommentDao extends AbstractDao implements CommentDao {
     }
     
     @Override
-    public void update(int postId, String content) throws SQLException {
-    
+    public void update(int commentId, String commentText) throws SQLException {
+        boolean autoCommit = connection.getAutoCommit();
+        connection.setAutoCommit(false);
+        String sql = "UPDATE comments SET comment_text=? WHERE comment_id =?";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+            preparedStatement.setString(1, commentText);
+            preparedStatement.setInt(2, commentId);
+            preparedStatement.executeUpdate();
+        } catch (SQLException ex) {
+            connection.rollback();
+            throw ex;
+        } finally {
+            connection.setAutoCommit(autoCommit);
+        }
     }
     
     @Override
-    public void delete(int postId) throws SQLException {
+    public void delete(int commentId) throws SQLException {
     
     }
     

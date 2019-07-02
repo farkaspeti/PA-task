@@ -11,9 +11,9 @@ public interface CommentDao {
     
     Comment add(int postId,int userId, String commentText, String commentDate) throws SQLException;
     
-    void update(int postId, String content) throws SQLException;
+    void update(int commentId, String commentText) throws SQLException;
     
-    void delete(int postId) throws SQLException;
+    void delete(int commentId) throws SQLException;
     
     List<Comment> findAllByUserId(int userId) throws SQLException;
     
