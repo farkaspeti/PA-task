@@ -17,7 +17,7 @@ public class DatabaseCommentDao extends AbstractDao implements CommentDao {
     }
     
     @Override
-    public Post findById(int commentId) throws SQLException {
+    public Comment findById(int commentId) throws SQLException {
         String sql = "SELECT * FROM comments WHERE comment_id = ?";
         try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
             preparedStatement.setInt(1, commentId);
