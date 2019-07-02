@@ -9,7 +9,9 @@ import java.util.List;
 
 public class DatabasePostDao extends AbstractDao implements PostDao {
     
-    public DatabasePostDao(Connection connection) { super(connection); }
+    public DatabasePostDao(Connection connection) {
+        super(connection);
+    }
     
     @Override
     public List<Post> findAll() throws SQLException {
@@ -20,7 +22,7 @@ public class DatabasePostDao extends AbstractDao implements PostDao {
             while (resultSet.next()) {
                 postList.add(fetchPost(resultSet));
             }
-        
+            
         }
         return postList;
     }
@@ -41,27 +43,39 @@ public class DatabasePostDao extends AbstractDao implements PostDao {
     
     @Override
     public Post add(int userId, String content, String postDate) throws SQLException {
-            boolean autoCommit = connection.getAutoCommit();
-            connection.setAutoCommit(false);
-            String sql = "INSERT INTO posts (user_id, content, post_date) VALUES (?, ?, ?)";
-            try (PreparedStatement preparedStatement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
-                preparedStatement.setInt(1, userId);
-                preparedStatement.setString(2, content);
-                preparedStatement.setString(3, postDate);
-                executeInsert(preparedStatement);
-                int id = fetchGeneratedId(preparedStatement);
-                return new Post(id, userId, content, postDate);
-            } catch (SQLException ex) {
-                connection.rollback();
-                throw ex;
-            } finally {
-                connection.setAutoCommit(autoCommit);
+        boolean autoCommit = connection.getAutoCommit();
+        connection.setAutoCommit(false);
+        String sql = "INSERT INTO posts (user_id, content, post_date) VALUES (?, ?, ?)";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+            preparedStatement.setInt(1, userId);
+            preparedStatement.setString(2, content);
+            preparedStatement.setString(3, postDate);
+            executeInsert(preparedStatement);
+            int id = fetchGeneratedId(preparedStatement);
+            return new Post(id, userId, content, postDate);
+        } catch (SQLException ex) {
+            connection.rollback();
+            throw ex;
+        } finally {
+            connection.setAutoCommit(autoCommit);
         }
     }
     
     @Override
     public void update(int postId, String content) throws SQLException {
-    
+        boolean autoCommit = connection.getAutoCommit();
+        connection.setAutoCommit(false);
+        String sql = "UPDATE posts SET  content=? WHERE post_id =?";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+            preparedStatement.setString(1, content);
+            preparedStatement.setInt(2, postId);
+            preparedStatement.executeUpdate();
+        } catch (SQLException ex) {
+            connection.rollback();
+            throw ex;
+        } finally {
+            connection.setAutoCommit(autoCommit);
+        }
     }
     
     @Override
