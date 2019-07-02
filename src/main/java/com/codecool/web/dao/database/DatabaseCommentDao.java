@@ -4,10 +4,7 @@ import com.codecool.web.dao.CommentDao;
 import com.codecool.web.model.Comment;
 import com.codecool.web.model.Post;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.List;
 
 public class DatabaseCommentDao extends AbstractDao implements CommentDao {
@@ -31,8 +28,24 @@ public class DatabaseCommentDao extends AbstractDao implements CommentDao {
     }
     
     @Override
-    public Post add(int userId, String content, String postDate) throws SQLException {
-        return null;
+    public Comment add(int postId,int userId, String commentText, String commentDate) throws SQLException {
+        boolean autoCommit = connection.getAutoCommit();
+        connection.setAutoCommit(false);
+        String sql = "INSERT INTO comments (post_id, user_id, comment_text, comment_date) VALUES (?, ?, ?, ?)";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+            preparedStatement.setInt(1, postId);
+            preparedStatement.setInt(2, userId);
+            preparedStatement.setString(3, commentText);
+            preparedStatement.setString(4, commentDate);
+            executeInsert(preparedStatement);
+            int id = fetchGeneratedId(preparedStatement);
+            return new Comment(id, postId, userId, commentText, commentDate);
+        } catch (SQLException ex) {
+            connection.rollback();
+            throw ex;
+        } finally {
+            connection.setAutoCommit(autoCommit);
+        }
     }
     
     @Override
