@@ -65,7 +65,7 @@ public class DatabasePostDao extends AbstractDao implements PostDao {
     public void update(int postId, String content) throws SQLException {
         boolean autoCommit = connection.getAutoCommit();
         connection.setAutoCommit(false);
-        String sql = "UPDATE posts SET  content=? WHERE post_id =?";
+        String sql = "UPDATE posts SET content=? WHERE post_id =?";
         try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
             preparedStatement.setString(1, content);
             preparedStatement.setInt(2, postId);
@@ -80,7 +80,18 @@ public class DatabasePostDao extends AbstractDao implements PostDao {
     
     @Override
     public void delete(int postId) throws SQLException {
-    
+        boolean autoCommit = connection.getAutoCommit();
+        connection.setAutoCommit(false);
+        String sqlString = "DELETE FROM posts cascade WHERE post_id = ?";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(sqlString)) {
+            preparedStatement.setInt(1, postId);
+            preparedStatement.execute();
+        } catch (SQLException ex) {
+            connection.rollback();
+            throw ex;
+        } finally {
+            connection.setAutoCommit(autoCommit);
+        }
     }
     
     @Override
