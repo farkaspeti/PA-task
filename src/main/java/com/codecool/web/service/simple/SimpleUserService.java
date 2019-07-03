@@ -27,4 +27,18 @@ public final class SimpleUserService implements UserService {
             throw new ServiceException(ex.getMessage());
         }
     }
+    
+    @Override
+    public void addUser(String email, String password, String firstName, String lastName) throws SQLException, ServiceException {
+        try {
+            userDao.add(email, password, firstName, lastName);
+        } catch (IllegalArgumentException ex) {
+            throw new ServiceException(ex.getMessage());
+        }
+    }
+    
+    @Override
+    public boolean emailVerify(String email) throws SQLException, ServiceException {
+        return false;
+    }
 }
