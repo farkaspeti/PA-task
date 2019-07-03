@@ -42,17 +42,16 @@ public class DatabasePostDao extends AbstractDao implements PostDao {
     }
     
     @Override
-    public Post add(int userId, String content, String postDate) throws SQLException {
+    public Post add(int userId, String content) throws SQLException {
         boolean autoCommit = connection.getAutoCommit();
         connection.setAutoCommit(false);
-        String sql = "INSERT INTO posts (user_id, content, post_date) VALUES (?, ?, ?)";
+        String sql = "INSERT INTO posts (user_id, content) VALUES (?, ?)";
         try (PreparedStatement preparedStatement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
             preparedStatement.setInt(1, userId);
             preparedStatement.setString(2, content);
-            preparedStatement.setString(3, postDate);
             executeInsert(preparedStatement);
             int id = fetchGeneratedId(preparedStatement);
-            return new Post(id, userId, content, postDate);
+            return new Post(id, userId, content);
         } catch (SQLException ex) {
             connection.rollback();
             throw ex;
@@ -109,24 +108,20 @@ public class DatabasePostDao extends AbstractDao implements PostDao {
     }
     
     @Override
-    public List<Post> findAllByLabel(String labelContent) throws SQLException {
-        List<Post> postList = new ArrayList<>();
-        String sql = "SELECT * FROM posts WHERE user_id = ? ORDER BY post_id";
-        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
-            preparedStatement.setString(1, labelContent);
-            ResultSet resultSet = preparedStatement.executeQuery();
-            while (resultSet.next()) {
-                postList.add(fetchPost(resultSet));
-            }
-        }
-        return postList;
+    public void addLabelToPost(int postId, int labelId) throws SQLException {
+    
     }
+    
+    @Override
+    public List<Integer> findPostIdByLabelId(int labelId) throws SQLException {
+        return null;
+    }
+    
     
     private Post fetchPost(ResultSet resultSet) throws SQLException {
         int id = resultSet.getInt("post_id");
         int userId = resultSet.getInt("user_id");
         String content = resultSet.getString("content");
-        String postDate = resultSet.getString("post_date");
-        return new Post(id, userId, content, postDate);
+        return new Post(id, userId, content);
     }
 }

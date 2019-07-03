@@ -11,7 +11,7 @@ public interface PostDao {
     
     Post findById(int postId) throws SQLException;
     
-    Post add(int userId, String content, String postDate) throws SQLException;
+    Post add(int userId, String content) throws SQLException;
     
     void update(int postId, String content) throws SQLException;
     
@@ -21,7 +21,7 @@ public interface PostDao {
     
     List<Post> findAllByUserId(int userId) throws SQLException;
     
-    List<Integer> findPostIdById(int labelId) throws SQLException;
+    List<Integer> findPostIdByLabelId(int labelId) throws SQLException;
     
     
 }
