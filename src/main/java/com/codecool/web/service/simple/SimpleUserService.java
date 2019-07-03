@@ -39,6 +39,14 @@ public final class SimpleUserService implements UserService {
     
     @Override
     public boolean emailVerify(String email) throws SQLException, ServiceException {
-        return false;
+        try {
+            if (userDao.findByEmail(email) != null) {
+                return true;
+            } else {
+                return false;
+            }
+        }catch (IllegalArgumentException ex) {
+            throw new ServiceException(ex.getMessage());
+        }
     }
 }
