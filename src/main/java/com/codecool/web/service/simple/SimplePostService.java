@@ -45,7 +45,11 @@ public class SimplePostService implements PostService {
     
     @Override
     public void deletePost(int postId) throws SQLException, ServiceException {
-    
+        try{
+            postDao.delete(postId);
+        }catch (IllegalArgumentException ex ){
+            throw new ServiceException(ex.getMessage());
+        }
     }
     
     @Override
