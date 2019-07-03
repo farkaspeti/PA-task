@@ -1,5 +1,6 @@
 package com.codecool.web.service.simple;
 
+import com.codecool.web.dao.PostDao;
 import com.codecool.web.model.Post;
 import com.codecool.web.service.PostService;
 import com.codecool.web.service.exception.ServiceException;
@@ -8,9 +9,20 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class SimplePostService implements PostService {
+    
+    private final PostDao postDao;
+    
+    public SimplePostService(PostDao postDao) {
+        this.postDao = postDao;
+    }
+    
     @Override
     public Post addPost(int userId, String content) throws SQLException, ServiceException {
-        return null;
+        try {
+            return postDao.add(userId, content);
+        } catch (IllegalArgumentException ex) {
+            throw new ServiceException(ex.getMessage());
+        }
     }
     
     @Override
