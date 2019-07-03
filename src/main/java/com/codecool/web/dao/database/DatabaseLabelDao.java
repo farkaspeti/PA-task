@@ -4,7 +4,10 @@ import com.codecool.web.dao.LabelDao;
 import com.codecool.web.model.Label;
 
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 
 public class DatabaseLabelDao extends AbstractDao implements LabelDao {
@@ -13,7 +16,16 @@ public class DatabaseLabelDao extends AbstractDao implements LabelDao {
     
     @Override
     public List<Label> findAll() throws SQLException {
-        return null;
+        List<Label> labelList = new ArrayList<>();
+        String sql = "SELECT * FROM labels ORDER BY label_id";
+        try (Statement statement = connection.createStatement();
+             ResultSet resultSet = statement.executeQuery(sql)) {
+            while (resultSet.next()) {
+                labelList.add(fetchLabel(resultSet));
+            }
+        
+        }
+        return labelList;
     }
     
     @Override
