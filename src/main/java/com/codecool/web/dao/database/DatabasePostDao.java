@@ -112,14 +112,14 @@ public class DatabasePostDao extends AbstractDao implements PostDao {
         boolean autoCommit = connection.getAutoCommit();
         connection.setAutoCommit(false);
         String sql = "UPDATE labels_posts SET label_id = ? WHERE post_id = ?";
-        try(PreparedStatement preparedStatement = connection.prepareStatement(sql)){
-            preparedStatement.setInt(1,labelId);
-            preparedStatement.setInt(2,postId);
+        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+            preparedStatement.setInt(1, labelId);
+            preparedStatement.setInt(2, postId);
             preparedStatement.executeUpdate();
-        }catch (SQLException ex){
+        } catch (SQLException ex) {
             connection.rollback();
             throw ex;
-        }finally {
+        } finally {
             connection.setAutoCommit(autoCommit);
         }
     }
@@ -127,15 +127,16 @@ public class DatabasePostDao extends AbstractDao implements PostDao {
     @Override
     public List<Integer> findPostIdByLabelId(int labelId) throws SQLException {
         List<Integer> postIdList = new ArrayList<>();
-        String sqlStatement = "SELECT post_id FROM labels_posts WHERE label_id = ? order by post_id";
-        try(PreparedStatement preparedStatement = connection.prepareStatement(sqlStatement)){
-            preparedStatement.setInt(1,labelId);
+        String sqlStatement = "SELECT post_id FROM labels_posts WHERE label_id = ? ORDER BY post_id";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(sqlStatement)) {
+            preparedStatement.setInt(1, labelId);
             try (ResultSet resultSet = preparedStatement.executeQuery()) {
                 while (resultSet.next()) {
                     postIdList.add(fetchLabelIds(resultSet));
                 }
             }
         }
+        return postIdList;
     }
     
     
