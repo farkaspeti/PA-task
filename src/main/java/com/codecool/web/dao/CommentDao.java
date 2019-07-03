@@ -9,7 +9,7 @@ public interface CommentDao {
     
     Comment findById(int postId) throws SQLException;
     
-    Comment add(int postId,int userId, String commentText, String commentDate) throws SQLException;
+    Comment add(int postId,int userId, String commentText) throws SQLException;
     
     void update(int commentId, String commentText) throws SQLException;
     
