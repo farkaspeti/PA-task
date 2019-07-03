@@ -145,4 +145,9 @@ public class DatabasePostDao extends AbstractDao implements PostDao {
         String content = resultSet.getString("content");
         return new Post(id, userId, content);
     }
+    
+    private Integer fetchLabelIds(ResultSet resultSet) throws SQLException {
+        int id = resultSet.getInt("post_id");
+        return id;
+    }
 }
