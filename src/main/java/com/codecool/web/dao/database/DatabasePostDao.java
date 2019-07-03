@@ -109,7 +109,19 @@ public class DatabasePostDao extends AbstractDao implements PostDao {
     
     @Override
     public void addLabelToPost(int postId, int labelId) throws SQLException {
-    
+        boolean autoCommit = connection.getAutoCommit();
+        connection.setAutoCommit(false);
+        String sql = "UPDATE labels_posts SET label_id = ? WHERE post_id = ?";
+        try(PreparedStatement preparedStatement = connection.prepareStatement(sql)){
+            preparedStatement.setInt(1,labelId);
+            preparedStatement.setInt(2,postId);
+            preparedStatement.executeUpdate();
+        }catch (SQLException ex){
+            connection.rollback();
+            throw ex;
+        }finally {
+            connection.setAutoCommit(autoCommit);
+        }
     }
     
     @Override
