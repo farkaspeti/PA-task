@@ -32,4 +32,10 @@ public class DatabaseLabelDao extends AbstractDao implements LabelDao {
     public Label add(String labelContent) throws SQLException {
         return null;
     }
+    
+    private Label fetchLabel(ResultSet resultSet) throws SQLException {
+        int id = resultSet.getInt("post_id");
+        String labelContent = resultSet.getString("label_content");
+        return new Label(id, labelContent);
+    }
 }
