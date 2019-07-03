@@ -36,7 +36,11 @@ public class SimplePostService implements PostService {
     
     @Override
     public void updatePost(int postId, String content) throws SQLException, ServiceException {
-    
+        try{
+            postDao.update(postId,content);
+        }catch (IllegalArgumentException ex ){
+            throw new ServiceException(ex.getMessage());
+        }
     }
     
     @Override
