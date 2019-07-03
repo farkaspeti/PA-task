@@ -54,7 +54,11 @@ public class SimplePostService implements PostService {
     
     @Override
     public void addLabelToPost(int postId, int labelId) throws SQLException, ServiceException {
-    
+        try{
+            postDao.addLabelToPost(postId,labelId);
+        }catch (IllegalArgumentException ex ){
+            throw new ServiceException(ex.getMessage());
+        }
     }
     
     @Override
