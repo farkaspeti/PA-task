@@ -17,5 +17,11 @@ public interface PostDao {
     
     void delete(int postId) throws SQLException;
     
+    void addLabelToPost(int postId, int labelId) throws SQLException;
+    
     List<Post> findAllByUserId(int userId) throws SQLException;
+    
+    List<Integer> findPostIdById(int labelId) throws SQLException;
+    
+    
 }

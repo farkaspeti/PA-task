@@ -108,6 +108,20 @@ public class DatabasePostDao extends AbstractDao implements PostDao {
         return postList;
     }
     
+    @Override
+    public List<Post> findAllByLabel(String labelContent) throws SQLException {
+        List<Post> postList = new ArrayList<>();
+        String sql = "SELECT * FROM posts WHERE user_id = ? ORDER BY post_id";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+            preparedStatement.setString(1, labelContent);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                postList.add(fetchPost(resultSet));
+            }
+        }
+        return postList;
+    }
+    
     private Post fetchPost(ResultSet resultSet) throws SQLException {
         int id = resultSet.getInt("post_id");
         int userId = resultSet.getInt("user_id");
