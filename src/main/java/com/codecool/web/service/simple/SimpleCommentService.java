@@ -63,6 +63,10 @@ public class SimpleCommentService implements CommentService {
     
     @Override
     public List<Comment> findAllByPostId(int postId) throws SQLException, ServiceException {
-        return null;
+        try{
+           return commentDao.findAllByPostId(postId);
+        }catch (IllegalArgumentException ex ){
+            throw new ServiceException(ex.getMessage());
+        }
     }
 }
