@@ -22,7 +22,7 @@ CREATE TABLE posts(
 	post_id SERIAL PRIMARY KEY,
 	user_id INT REFERENCES users(user_id),
 	content VARCHAR(300),
-	post_date date NOT NULL DEFAULT CURRENT_DATE
+	post_date date
 );
 
 CREATE TABLE comments(
@@ -30,7 +30,7 @@ CREATE TABLE comments(
 	post_id INT REFERENCES posts(post_id),
 	user_id INT REFERENCES users(user_id),
 	comment_text VARCHAR(300),
-	comment_date date NOT NULL DEFAULT CURRENT_DATE
+	comment_date date
 );
 
 CREATE TABLE labels(
@@ -43,7 +43,7 @@ CREATE TABLE messages_users(
 	user_id_sender INT REFERENCES users(user_id),
 	message_content VARCHAR(300),
 	user_id_receiver INT REFERENCES users(user_id),
-	message_date date NOT NULL DEFAULT CURRENT_DATE
+	message_date date
 );
 
 CREATE TABLE labels_posts(
