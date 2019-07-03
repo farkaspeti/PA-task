@@ -43,6 +43,8 @@ public class DatabasePostDao extends AbstractDao implements PostDao {
     
     @Override
     public Post add(int userId, String content) throws SQLException {
+        java.util.Date date = new java.util.Date();
+        Date postDate = new Date(date.getTime());
         boolean autoCommit = connection.getAutoCommit();
         connection.setAutoCommit(false);
         String sql = "INSERT INTO posts (user_id, content) VALUES (?, ?)";
@@ -51,7 +53,7 @@ public class DatabasePostDao extends AbstractDao implements PostDao {
             preparedStatement.setString(2, content);
             executeInsert(preparedStatement);
             int id = fetchGeneratedId(preparedStatement);
-            return new Post(id, userId, content);
+            return new Post(id, userId, content, postDate);
         } catch (SQLException ex) {
             connection.rollback();
             throw ex;
@@ -144,7 +146,8 @@ public class DatabasePostDao extends AbstractDao implements PostDao {
         int id = resultSet.getInt("post_id");
         int userId = resultSet.getInt("user_id");
         String content = resultSet.getString("content");
-        return new Post(id, userId, content);
+        Date postDate = resultSet.getDate("post_date");
+        return new Post(id, userId, content, postDate);
     }
     
     private Integer fetchLabelIds(ResultSet resultSet) throws SQLException {

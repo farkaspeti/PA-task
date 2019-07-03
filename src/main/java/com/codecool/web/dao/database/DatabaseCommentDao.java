@@ -30,6 +30,8 @@ public class DatabaseCommentDao extends AbstractDao implements CommentDao {
     
     @Override
     public Comment add(int postId,int userId, String commentText) throws SQLException {
+        java.util.Date date = new java.util.Date();
+        Date commentDate = new Date(date.getTime());
         boolean autoCommit = connection.getAutoCommit();
         connection.setAutoCommit(false);
         String sql = "INSERT INTO comments (post_id, user_id, comment_text) VALUES (?, ?, ?)";
@@ -39,7 +41,7 @@ public class DatabaseCommentDao extends AbstractDao implements CommentDao {
             preparedStatement.setString(3, commentText);
             executeInsert(preparedStatement);
             int id = fetchGeneratedId(preparedStatement);
-            return new Comment(id, postId, userId, commentText);
+            return new Comment(id, postId, userId, commentText, commentDate);
         } catch (SQLException ex) {
             connection.rollback();
             throw ex;
@@ -114,6 +116,7 @@ public class DatabaseCommentDao extends AbstractDao implements CommentDao {
         int postId = resultSet.getInt("post_id");
         int userId = resultSet.getInt("user_id");
         String commentText = resultSet.getString("comment_text");
-        return new Comment(id, postId, userId, commentText);
+        Date commentDate = resultSet.getDate("comment_date");
+        return new Comment(id, postId, userId, commentText, commentDate);
     }
 }

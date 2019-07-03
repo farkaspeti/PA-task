@@ -10,13 +10,12 @@ public final class Comment extends AbstractModel {
     private final String commentText;
     private final Date commentDate;
     
-    public Comment(int id, int postId, int userId, String commentText) {
+    public Comment(int id, int postId, int userId, String commentText, Date commentDate) {
         super(id);
         this.postId = postId;
         this.userId = userId;
         this.commentText = commentText;
-        java.util.Date date = new java.util.Date();
-        commentDate = new Date(date.getTime());
+        this.commentDate = commentDate;
     }
     
     public int getPostId() {
