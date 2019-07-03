@@ -3,10 +3,7 @@ package com.codecool.web.dao.database;
 import com.codecool.web.dao.LabelDao;
 import com.codecool.web.model.Label;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,7 +27,20 @@ public class DatabaseLabelDao extends AbstractDao implements LabelDao {
     
     @Override
     public Label add(String labelContent) throws SQLException {
-        return null;
+        boolean autoCommit = connection.getAutoCommit();
+        connection.setAutoCommit(false);
+        String sql = "INSERT INTO labels (label_content) VALUES (?)";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+            preparedStatement.setString(2, labelContent);
+            executeInsert(preparedStatement);
+            int id = fetchGeneratedId(preparedStatement);
+            return new Label(id, labelContent);
+        } catch (SQLException ex) {
+            connection.rollback();
+            throw ex;
+        } finally {
+            connection.setAutoCommit(autoCommit);
+        }
     }
     
     private Label fetchLabel(ResultSet resultSet) throws SQLException {
