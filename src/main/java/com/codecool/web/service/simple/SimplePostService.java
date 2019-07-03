@@ -81,6 +81,10 @@ public class SimplePostService implements PostService {
     
     @Override
     public List<Integer> findPostIdByLabelId(int labelId) throws SQLException, ServiceException {
-        return null;
+        try{
+            return postDao.findPostIdByLabelId(labelId);
+        }catch (IllegalArgumentException ex ){
+            throw new ServiceException(ex.getMessage());
+        }
     }
 }
