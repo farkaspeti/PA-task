@@ -27,7 +27,11 @@ public class SimpleCommentService implements CommentService {
     
     @Override
     public Comment addComment(int postId, int userId, String commentText) throws SQLException, ServiceException {
-        return null;
+        try {
+            return commentDao.add(postId, userId, commentText);
+        }catch (IllegalArgumentException e ){
+            throw new ServiceException(e.getMessage());
+        }
     }
     
     @Override
