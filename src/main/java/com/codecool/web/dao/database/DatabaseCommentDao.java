@@ -29,18 +29,17 @@ public class DatabaseCommentDao extends AbstractDao implements CommentDao {
     }
     
     @Override
-    public Comment add(int postId,int userId, String commentText, String commentDate) throws SQLException {
+    public Comment add(int postId,int userId, String commentText) throws SQLException {
         boolean autoCommit = connection.getAutoCommit();
         connection.setAutoCommit(false);
-        String sql = "INSERT INTO comments (post_id, user_id, comment_text, comment_date) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO comments (post_id, user_id, comment_text) VALUES (?, ?, ?)";
         try (PreparedStatement preparedStatement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
             preparedStatement.setInt(1, postId);
             preparedStatement.setInt(2, userId);
             preparedStatement.setString(3, commentText);
-            preparedStatement.setString(4, commentDate);
             executeInsert(preparedStatement);
             int id = fetchGeneratedId(preparedStatement);
-            return new Comment(id, postId, userId, commentText, commentDate);
+            return new Comment(id, postId, userId, commentText);
         } catch (SQLException ex) {
             connection.rollback();
             throw ex;
@@ -115,7 +114,6 @@ public class DatabaseCommentDao extends AbstractDao implements CommentDao {
         int postId = resultSet.getInt("post_id");
         int userId = resultSet.getInt("user_id");
         String commentText = resultSet.getString("comment_text");
-        String commentDate = resultSet.getString("comment_date");
-        return new Comment(id, postId, userId, commentText, commentDate);
+        return new Comment(id, postId, userId, commentText);
     }
 }
