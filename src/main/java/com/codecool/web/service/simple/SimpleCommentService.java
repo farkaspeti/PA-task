@@ -20,8 +20,8 @@ public class SimpleCommentService implements CommentService {
     public Comment findById(int postId) throws SQLException, ServiceException {
         try{
             return commentDao.findById(postId);
-        }catch (IllegalArgumentException e){
-            throw new ServiceException(e.getMessage());
+        }catch (IllegalArgumentException ex){
+            throw new ServiceException(ex.getMessage());
         }
     }
     
@@ -29,13 +29,18 @@ public class SimpleCommentService implements CommentService {
     public Comment addComment(int postId, int userId, String commentText) throws SQLException, ServiceException {
         try {
             return commentDao.add(postId, userId, commentText);
-        }catch (IllegalArgumentException e ){
-            throw new ServiceException(e.getMessage());
+        }catch (IllegalArgumentException ex ){
+            throw new ServiceException(ex.getMessage());
         }
     }
     
     @Override
     public void updateComment(int commentId, String commentText) throws SQLException, ServiceException {
+        try{
+            commentDao.update(commentId,commentText);
+        }catch (IllegalArgumentException ex ){
+            throw new ServiceException(ex.getMessage());
+        }
     }
     
     @Override
