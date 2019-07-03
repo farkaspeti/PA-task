@@ -45,7 +45,11 @@ public class SimpleCommentService implements CommentService {
     
     @Override
     public void deleteComment(int commentId) throws SQLException, ServiceException {
-    
+        try{
+            commentDao.delete(commentId);
+        }catch (IllegalArgumentException ex ){
+            throw new ServiceException(ex.getMessage());
+        }
     }
     
     @Override
