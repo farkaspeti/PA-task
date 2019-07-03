@@ -27,7 +27,11 @@ public class SimplePostService implements PostService {
     
     @Override
     public List<Post> findAllByUserId(int userId) throws SQLException, ServiceException {
-        return null;
+        try{
+            return postDao.findAllByUserId(userId);
+        }catch (IllegalArgumentException ex ){
+            throw new ServiceException(ex.getMessage());
+        }
     }
     
     @Override
