@@ -17,7 +17,7 @@ public class SimpleLabelService implements LabelService {
     @Override
     public List<Label> findAll() throws SQLException, ServiceException {
         try {
-            labelDao.findAll();
+            return labelDao.findAll();
         } catch (IllegalArgumentException ex) {
             throw new ServiceException(ex.getMessage());
         }
@@ -25,6 +25,10 @@ public class SimpleLabelService implements LabelService {
     
     @Override
     public Label addLabel(String labelContent) throws SQLException, ServiceException {
-        return null;
+        try{
+           return labelDao.add(labelContent);
+        }catch (IllegalArgumentException ex ){
+            throw new ServiceException(ex.getMessage());
+        }
     }
 }
