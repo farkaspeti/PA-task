@@ -6,7 +6,7 @@ public final class Label extends AbstractModel {
     
     public Label(int id, String labelContent) {
         super(id);
-        this.labelContent = labelContent;
+        this.labelContent = "# " + labelContent;
     }
     
     public String getLabelContent() {
