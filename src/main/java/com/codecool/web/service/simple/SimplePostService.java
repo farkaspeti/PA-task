@@ -63,7 +63,11 @@ public class SimplePostService implements PostService {
     
     @Override
     public Post findById(int postId) throws SQLException, ServiceException {
-        return null;
+        try{
+            return postDao.findById(postId);
+        }catch (IllegalArgumentException ex ){
+            throw new ServiceException(ex.getMessage());
+        }
     }
     
     @Override
