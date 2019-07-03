@@ -72,7 +72,11 @@ public class SimplePostService implements PostService {
     
     @Override
     public List<Post> findAll() throws SQLException, ServiceException {
-        return null;
+        try{
+            return postDao.findAll();
+        }catch (IllegalArgumentException ex ){
+            throw new ServiceException(ex.getMessage());
+        }
     }
     
     @Override
