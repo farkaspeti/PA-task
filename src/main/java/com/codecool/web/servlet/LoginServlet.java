@@ -19,14 +19,12 @@ public final class LoginServlet extends AbstractServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        resp.setContentType("text/html;charset=UTF-8");
         try (Connection connection = getConnection(req.getServletContext())) {
             UserDao userDao = new DatabaseUserDao(connection);
             UserService userService = new SimpleUserService(userDao);
-
-            String email = req.getParameter("email");
-            String password = req.getParameter("password");
-
-            User user = userService.loginUser(email, password);
+    
+            User user = userService.loginUser(req.getParameter("email"),req.getParameter("password"));
             req.getSession().setAttribute("user", user);
 
             sendMessage(resp, HttpServletResponse.SC_OK, user);
