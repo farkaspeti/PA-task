@@ -7,7 +7,6 @@ const INTERNAL_SERVER_ERROR = 500;
 let loginContentDivEl;
 let profileContentDivEl;
 let backToProfileContentDivEl;
-let logoutContentDivEl;
 
 function newInfo(targetEl, message) {
     newMessage(targetEl, 'info', message);
@@ -93,17 +92,29 @@ function setUnauthorized() {
     return localStorage.removeItem('user');
 }
 
+function onCloseToWelcomeClicked() {
+    showContents(['welcome-content'])
+}
+
 function onLoad() {
     loginContentDivEl = document.getElementById('login-content');
     profileContentDivEl = document.getElementById('profile-content');
     backToProfileContentDivEl = document.getElementById('back-to-profile-content');
-    logoutContentDivEl = document.getElementById('logout-content');
 
     const loginButtonEl = document.getElementById('login-button');
     loginButtonEl.addEventListener('click', onLoginButtonClicked);
 
-    const logoutButtonEl = document.getElementById('logout-button');
-    logoutButtonEl.addEventListener('click', onLogoutButtonClicked);
+    const toLoginButtonEl = document.getElementById('toLogin-button');
+    toLoginButtonEl.addEventListener('click', backToLoginButtonClicked);
+
+    const toSignUpButtonEl = document.getElementById('toSignUp-button');
+    toSignUpButtonEl.addEventListener('click', onSignUpButtonClicked);
+
+    const closeLoginButtonEl = document.getElementById('closeLogin-button');
+    closeLoginButtonEl.addEventListener('click', onCloseToWelcomeClicked);
+
+    const closeSignUpButtonEl = document.getElementById('closeSignUp-button');
+    closeSignUpButtonEl.addEventListener('click', onCloseToWelcomeClicked);
 
     if (hasAuthorization()) {
         onProfileLoad(getAuthorization());

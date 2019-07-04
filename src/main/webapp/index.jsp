@@ -9,20 +9,19 @@
     <c:url value="/scripts/index.js" var="indexScriptUrl"/>
     <c:url value="/scripts/login.js" var="loginScriptUrl"/>
     <c:url value="/scripts/profile.js" var="profileScriptUrl"/>
-    <c:url value="/scripts/logout.js" var="logoutScriptUrl"/>
+    <c:url value="/scripts/signUp.js" var="signUpScriptUrl"/>
     <script src="${profileScriptUrl}"></script>
     <script src="${indexScriptUrl}"></script>
     <script src="${loginScriptUrl}"></script>
-    <script src="${logoutScriptUrl}"></script>
+    <script src="${signUpScriptUrl}"></script>
+    <link href='https://fonts.googleapis.com/css?family=Aldrich' rel='stylesheet'>
 </head>
 <body>
 <div id="welcome-content" class="content">
-    <div style="float: left; width: 50%; padding: 20% 0">
-        <p style="font-family: 'futura'; font-size: 42px">HI! this is My PA blog engine!</p>
+    <div style="float: left">
+        <p style="font-family: 'Aldrich'; font-size: 42px">HI! this is My PA blog engine!</p>
         <button style="width: 30%" id="toLogin-button">Press to Login</button>
         <button style="width: 30%" id="toSignUp-button">Press to Sign Up</button>
-    </div>
-    <div style="float: right; width: 50%">
     </div>
     <div id="login-content" class="hidden content modal">
         <form accept-charset=utf-8 id="login-form" onsubmit="return false;" class="modal-content animate"
@@ -31,7 +30,7 @@
                                             class="close">&times;</span>
                 <h4>
                     <input type="text" placeholder="Enter your email address" name="email" required>
-                    <input type="password" placeholder="Enter Password" name="psw" required>
+                    <input type="password" placeholder="Enter Password" name="password" required>
                     <p style="padding: 0 20%">
                         <button id="login-button" type="submit">Login</button>
                     </p>

@@ -1,0 +1,112 @@
+body {
+    font-family: 'Aldrich';
+    color:#f0edee;
+    background-image:url("PA-welcome.gif");
+    background-size:auto;
+    background-repeat:no-repeat;
+    background-color: #202020;
+    background-position-x: center;
+    overflow: auto;
+}
+
+input[type=text], input[type=password] {
+    width: 80%;
+    padding: 12px 20px;
+    margin: 10px;
+    display: inline-block;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: #2C666E;
+    color: #f0edee;
+    padding: 10px 5px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 80%;
+}
+
+#div1 {
+    width: 50%;
+    float: left;
+}
+
+#div2 {
+    width: 50%;
+    float: right;
+}
+
+#schedules {
+    padding-left: 15%;
+}
+
+
+.show {
+    display: block;
+}
+
+
+.hidden {
+    display: none;
+}
+
+.modal {
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+    margin-left: 65%;
+    border: 1px solid #f0edee;
+    width: 30%;
+    padding-bottom: 20px;
+    text-align: center;
+    margin-top: 5%;
+}
+
+.close {
+    position: absolute;
+    right: 5.5%;
+    top: 12%;
+    color: #000;
+    font-size: 35px;
+    font-weight: bold;
+}
+
+.close:hover, .close:focus {
+    color: red;
+    cursor: pointer;
+}
+
+.animate {
+    animation: zoom 0.6s
+}
+
+@keyframes zoom {
+    from {
+        transform: scale(0)
+    }
+    to {
+        transform: scale(1)
+    }
+}
+
+.timeIndicator {
+    width: 1%;
+}
+
+.active {
+    background-color: white;
+}
+
+.deleteButton {
+    padding: 0;
+    margin: 0;
+}
