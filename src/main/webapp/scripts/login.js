@@ -27,3 +27,6 @@ function onLoginButtonClicked() {
     xhr.open('POST', 'login');
     xhr.send(params);
 }
+function backToSignUpButtonClicked() {
+    showContents(['signUp-content', 'welcome-content']);
+}

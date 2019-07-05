@@ -51,14 +51,10 @@
                       class="close">&times;</span>
                 <h1>SIGN UP</h1>
                 <div><input type="text" placeholder="Enter Last Name" name="lastName" required style="width: 39%">
-                    <input type="text" placeholder="Enter Forename" name="firstName" required style="width: 39%"></div>
-                <p><input type="password" placeholder="Enter Password" name="password"
-                          pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required
-                          title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters">
+                    <input type="text" placeholder="Enter First ame" name="firstName" required style="width: 39%"></div>
+                <p><input type="password" placeholder="Enter Password" name="password" required>
                 </p>
-                <p><input type="password" placeholder="Reenter Password" name="passwordre"
-                          pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required
-                          title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters">
+                <p><input type="password" placeholder="Reenter Password" name="passwordre" required>
                 </p>
                 <p><input type="text" placeholder="Enter your email address" name="email" required></p>
                 <p style="padding: 0 20%">

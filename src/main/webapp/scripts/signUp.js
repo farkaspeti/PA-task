@@ -26,7 +26,7 @@ function onSubmitButtonClicked() {
 
     const xhr = new XMLHttpRequest();
     xhr.addEventListener('load', onSignUpResponse);
-    xhr.open('POST', 'signup');
+    xhr.open('POST', 'register');
     xhr.send(params);
 
 }
