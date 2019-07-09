@@ -81,7 +81,7 @@
             <li><a id="logout-a"><i class="fa fa-unlink"></i>Logout</a></li>
             <li><a class="active" href="#home"><i class="fa fa-fw fa-home"></i>Home</a></li>
             <li><a id="profile-a"><i class="fa fa-fw fa-user"></i>Profile</a></li>
-            <li><a href="#news">News</a></li>
+            <li><a href="#news"></a></li>
         </ul>
     </div>
 
