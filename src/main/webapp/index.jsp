@@ -52,11 +52,11 @@
                 <h1>SIGN UP</h1>
                 <div><input type="text" placeholder="Enter Last Name" name="lastName" required style="width: 39%">
                     <input type="text" placeholder="Enter First ame" name="firstName" required style="width: 39%"></div>
-                <p><input type="password" placeholder="Enter Password" name="password" pattern="(?=.*\d)(?=.*[A-Z]).{5,}"
+                <p><input type="password" placeholder="Enter Password" name="password" pattern="(?=.*[A-Z]).{5,}"
                           title="Must contain at least one uppercase letter, and at least 5 or more characters"
                           required>
                 </p>
-                <p><input type="password" placeholder="Reenter Password" name="passwordre" pattern="(?=.*\d)(?=.*[A-Z]).{5,}"
+                <p><input type="password" placeholder="Reenter Password" name="passwordre" pattern="(?=.*[A-Z]).{5,}"
                           title="Must contain at least one uppercase letter, and at least 5 or more characters"
                           required>
                 </p>
@@ -71,5 +71,14 @@
         </form>
     </div>
 </div>
+
+<div id="landing-content" class="hidden content">
+    <div id="profile-content" class="hidden content modal">
+                <p>LastName: <span id="user-lastName"></span></p>
+                <p>FirstName: <span id="user-firstName"></span></p>
+                <p>Email: <span id="user-email"></span></p>
+            </div>
+</div>
+
 </body>
 </html>

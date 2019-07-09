@@ -1,26 +1,17 @@
-function onShopsClicked() {
-    const xhr = new XMLHttpRequest();
-    xhr.addEventListener('load', onShopsResponse);
-    xhr.addEventListener('error', onNetworkError);
-    xhr.open('GET', 'protected/shops');
-    xhr.send();
-}
-
-function onCouponsClicked() {
-    const xhr = new XMLHttpRequest();
-    xhr.addEventListener('load', onCouponsResponse);
-    xhr.addEventListener('error', onNetworkError);
-    xhr.open('GET', 'protected/coupons');
-    xhr.send();
-}
-
 function onProfileLoad(user) {
-    clearMessages();
-    showContents(['profile-content', 'logout-content']);
+    const userFirstNameSpanEl = document.getElementById('user-firstName');
+    const userLastNameSpanEl = document.getElementById('user-lastName');
+    const userEmailSpanEl = document.getElementById('user-email');
 
-    const userEmailSpandEl = document.getElementById('user-email');
-    const userPasswordSpanEl = document.getElementById('user-password');
+    userFirstNameSpanEl.textContent = user.firstName;
+    userLastNameSpanEl.textContent = user.lastName;
+    userEmailSpanEl.textContent = user.email;
+}
 
-    userEmailSpandEl.textContent = user.email;
-    userPasswordSpanEl.textContent = user.password;
+function onProfileButtonClicked() {
+    showContents(['profile-content', 'landing-content']);
+}
+
+function onCloseProfileButtonClicked() {
+    showContents(['landing-content']);
 }

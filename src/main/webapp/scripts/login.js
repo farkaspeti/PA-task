@@ -2,9 +2,13 @@ function onLoginResponse() {
     if (this.status === OK) {
         const user = JSON.parse(this.responseText);
         setAuthorization(user);
-        onProfileLoad(user);
-    } else {
-        onOtherResponse(loginContentDivEl, this);
+        if (hasAuthorization()) {
+            showContents(['landing-content']);
+            onProfileLoad(getAuthorization());
+
+        }
+    }else if(this.status === UNAUTHORIZED){
+        alert("Your email address or password was incorrect!");
     }
 }
 
