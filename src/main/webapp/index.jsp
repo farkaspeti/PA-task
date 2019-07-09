@@ -10,10 +10,12 @@
     <c:url value="/scripts/login.js" var="loginScriptUrl"/>
     <c:url value="/scripts/profile.js" var="profileScriptUrl"/>
     <c:url value="/scripts/signUp.js" var="signUpScriptUrl"/>
+    <c:url value="/scripts/logout.js" var="logoutScriptUrl"/>
     <script src="${profileScriptUrl}"></script>
     <script src="${indexScriptUrl}"></script>
     <script src="${loginScriptUrl}"></script>
     <script src="${signUpScriptUrl}"></script>
+    <script src="${logoutScriptUrl}"></script>
     <link href='https://fonts.googleapis.com/css?family=Aldrich' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
@@ -76,7 +78,7 @@
 <div id="landing-content" class="hidden content">
     <div class="topnavbar">
         <ul>
-            <li><a href="#contact"><i class="fa fa-unlink"></i>Logout</a></li>
+            <li><a id="logout-a"><i class="fa fa-unlink"></i>Logout</a></li>
             <li><a class="active" href="#home"><i class="fa fa-fw fa-home"></i>Home</a></li>
             <li><a href="#about"><i class="fa fa-fw fa-user"></i>Profile</a></li>
             <li><a href="#news">News</a></li>

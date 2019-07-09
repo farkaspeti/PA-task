@@ -2,13 +2,11 @@ function onLogoutResponse() {
     if (this.status === OK) {
         setUnauthorized();
         clearMessages();
-        showContents(['login-content'])
-    } else {
-        onOtherResponse(logoutContentDivEl, this);
+        showContents(['welcome-content'])
     }
 }
 
-function onLogoutButtonClicked(event) {
+function onLogoutAClicked() {
     const xhr = new XMLHttpRequest();
     xhr.addEventListener('load', onLogoutResponse);
     xhr.addEventListener('error', onNetworkError);
