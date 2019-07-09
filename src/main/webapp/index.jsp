@@ -5,7 +5,9 @@
 <head>
     <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PA-Blog-Engine</title>
-    <link rel="stylesheet" type="text/css" href="index.css" media="all">
+    <link rel="stylesheet" href="index.css" media="all">
+    <link href='https://fonts.googleapis.com/css?family=Aldrich' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <c:url value="/scripts/index.js" var="indexScriptUrl"/>
     <c:url value="/scripts/login.js" var="loginScriptUrl"/>
     <c:url value="/scripts/profile.js" var="profileScriptUrl"/>
@@ -16,8 +18,6 @@
     <script src="${loginScriptUrl}"></script>
     <script src="${signUpScriptUrl}"></script>
     <script src="${logoutScriptUrl}"></script>
-    <link href='https://fonts.googleapis.com/css?family=Aldrich' rel='stylesheet'>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
 <div id="welcome-content" class="content">
@@ -29,7 +29,7 @@
     <div id="login-content" class="hidden content modal">
         <form accept-charset=utf-8 id="login-form" onsubmit="return false;" class="modal-content animate"
               action="/action_page.php">
-            <div class="imgcontainer"><span style="width: 2%; float: right" id="closeLogin-button" title="Close PopUp"
+            <div><span style="width: 2%; float: right" id="closeLogin-button" title="Close PopUp"
                                             class="close">&times;</span>
                 <h4>
                     <input type="text" placeholder="Enter your email address" name="email" required>
@@ -49,7 +49,7 @@
     <div id="signUp-content" class="hidden content modal">
         <form accept-charset=utf-8 id='signUp-form' onsubmit="return false;" class="modal-content animate"
               action="/action_page.php">
-            <div class="imgcontainer">
+            <div>
                 <span style="width: 2%; float: right" id="closeSignUp-button" title="Close PopUp"
                       class="close">&times;</span>
                 <h1>SIGN UP</h1>
@@ -80,16 +80,19 @@
         <ul>
             <li><a id="logout-a"><i class="fa fa-unlink"></i>Logout</a></li>
             <li><a class="active" href="#home"><i class="fa fa-fw fa-home"></i>Home</a></li>
-            <li><a href="#about"><i class="fa fa-fw fa-user"></i>Profile</a></li>
+            <li><a id="profile-a"><i class="fa fa-fw fa-user"></i>Profile</a></li>
             <li><a href="#news">News</a></li>
         </ul>
     </div>
+
     <div id="profile-content" class="hidden content modal">
-        <p>LastName: <span id="user-lastName"></span></p>
-        <p>FirstName: <span id="user-firstName"></span></p>
-        <p>Email: <span id="user-email"></span></p>
+        <div class="profile">
+            <p id="closeProfile-button" class="close"><span>&times;</span></p>
+            <p>LastName: <span id="user-lastName"></span></p>
+            <p>FirstName: <span id="user-firstName"></span></p>
+            <p>Email: <span id="user-email"></span></p>
+        </div>
     </div>
 </div>
-
 </body>
 </html>

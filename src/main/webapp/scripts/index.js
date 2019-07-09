@@ -7,7 +7,6 @@ const INTERNAL_SERVER_ERROR = 500;
 let loginContentDivEl;
 let profileContentDivEl;
 let signUpContentDivEl;
-let backToProfileContentDivEl;
 
 function newInfo(targetEl, message) {
     newMessage(targetEl, 'info', message);
@@ -97,10 +96,13 @@ function onCloseToWelcomeClicked() {
     showContents(['welcome-content'])
 }
 
+function onCloseToLandingClicked() {
+    showContents(['landing-content'])
+}
+
 function onLoad() {
     loginContentDivEl = document.getElementById('login-content');
     profileContentDivEl = document.getElementById('profile-content');
-    backToProfileContentDivEl = document.getElementById('back-to-profile-content');
     signUpContentDivEl = document.getElementById('signUp-content');
 
     const loginButtonEl = document.getElementById('login-button');
@@ -118,11 +120,18 @@ function onLoad() {
     const closeLoginButtonEl = document.getElementById('closeLogin-button');
     closeLoginButtonEl.addEventListener('click', onCloseToWelcomeClicked);
 
+    const closeProfileButtonEl = document.getElementById('closeProfile-button');
+    closeProfileButtonEl.addEventListener('click', onCloseToLandingClicked);
+
     const closeSignUpButtonEl = document.getElementById('closeSignUp-button');
     closeSignUpButtonEl.addEventListener('click', onCloseToWelcomeClicked);
 
     const logoutAEl = document.getElementById('logout-a');
     logoutAEl.addEventListener('click', onLogoutAClicked);
+
+    const profileAEl = document.getElementById('profile-a');
+    profileAEl.addEventListener('click', onProfileAClicked);
+
 
     if (hasAuthorization()) {
         onProfileLoad(getAuthorization());

@@ -37,6 +37,12 @@ div.topnavbar a:hover:not(.active) {
     background-color: #2C666E;
 }
 
+div.profile {
+    float: right;
+    margin-top: 10%;
+    margin-right: 5%;
+}
+
 input[type=text], input[type=password] {
     width: 80%;
     padding: 12px 20px;
@@ -128,9 +134,4 @@ button {
 
 .timeIndicator {
     width: 1%;
-}
-
-.deleteButton {
-    padding: 0;
-    margin: 0;
 }

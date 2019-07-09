@@ -8,7 +8,7 @@ function onProfileLoad(user) {
     userEmailSpanEl.textContent = user.email;
 }
 
-function onProfileButtonClicked() {
+function onProfileAClicked() {
     showContents(['profile-content', 'landing-content']);
 }
 
