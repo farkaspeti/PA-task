@@ -1,6 +1,6 @@
 body {
     font-family: 'Aldrich';
-    color:#f0edee;
+    color:#F0EDEE;
     background-image:url("PA-welcome.gif");
     background-size:auto;
     background-repeat:no-repeat;
@@ -23,14 +23,14 @@ div.topnavbar li {
 
 div.topnavbar a {
     display: block;
-    color: #f0edee;
+    color: #F0EDEE;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
 }
 
 div.topnavbar a:hover:not(.active) {
-    background-color: #111;
+    background-color: #618183;
 }
 
 .active {
@@ -47,7 +47,7 @@ input[type=text], input[type=password] {
 
 button {
     background-color: #2C666E;
-    color: #f0edee;
+    color: #F0EDEE;
     padding: 10px 5px;
     margin: 8px 0;
     border: none;
@@ -92,7 +92,7 @@ button {
 
 .modal-content {
     margin-left: 65%;
-    border: 1px solid #f0edee;
+    border: 1px solid #F0EDEE;
     width: 30%;
     padding-bottom: 20px;
     text-align: center;
@@ -109,7 +109,7 @@ button {
 }
 
 .close:hover, .close:focus {
-    color: red;
+    color: RED;
     cursor: pointer;
 }
 

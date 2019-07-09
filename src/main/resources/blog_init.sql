@@ -70,5 +70,5 @@ CREATE TRIGGER post_trigger
    	FOR EACH ROW EXECUTE PROCEDURE posts_function();
 
 
-INSERT INTO users(user_id,first_name,last_name,password,email,user_type) VALUES (1,'Admin','1','admin123','admin@admin','ADMIN');
+INSERT INTO users(user_id,first_name,last_name,password,email,user_type) VALUES (1,'Péter','Farkas','admin123','admin@admin','ADMIN');
 
