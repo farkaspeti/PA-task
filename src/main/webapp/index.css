@@ -9,6 +9,34 @@ body {
     overflow: auto;
 }
 
+div.topnavbar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+div.topnavbar li {
+    float: left;
+}
+
+div.topnavbar a {
+    display: block;
+    color: #f0edee;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+div.topnavbar a:hover:not(.active) {
+    background-color: #111;
+}
+
+.active {
+    background-color: #2C666E;
+}
+
 input[type=text], input[type=password] {
     width: 80%;
     padding: 12px 20px;
@@ -100,10 +128,6 @@ button {
 
 .timeIndicator {
     width: 1%;
-}
-
-.active {
-    background-color: white;
 }
 
 .deleteButton {

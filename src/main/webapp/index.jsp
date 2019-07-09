@@ -3,7 +3,7 @@
 
 <html lang="en">
 <head>
-    <meta charset ="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PA-Blog-Engine</title>
     <link rel="stylesheet" type="text/css" href="index.css" media="all">
     <c:url value="/scripts/index.js" var="indexScriptUrl"/>
@@ -73,11 +73,19 @@
 </div>
 
 <div id="landing-content" class="hidden content">
+    <div class="topnavbar">
+        <ul>
+            <li><a class="active" href="#home">Home</a></li>
+            <li><a href="#news">News</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="#about">About</a></li>
+        </ul>
+    </div>
     <div id="profile-content" class="hidden content modal">
-                <p>LastName: <span id="user-lastName"></span></p>
-                <p>FirstName: <span id="user-firstName"></span></p>
-                <p>Email: <span id="user-email"></span></p>
-            </div>
+        <p>LastName: <span id="user-lastName"></span></p>
+        <p>FirstName: <span id="user-firstName"></span></p>
+        <p>Email: <span id="user-email"></span></p>
+    </div>
 </div>
 
 </body>
