@@ -13,11 +13,13 @@
     <c:url value="/scripts/profile.js" var="profileScriptUrl"/>
     <c:url value="/scripts/signup.js" var="signUpScriptUrl"/>
     <c:url value="/scripts/logout.js" var="logoutScriptUrl"/>
+    <c:url value="/scripts/posts.js" var="postsScriptUrl"/>
     <script src="${profileScriptUrl}"></script>
     <script src="${indexScriptUrl}"></script>
     <script src="${loginScriptUrl}"></script>
     <script src="${signUpScriptUrl}"></script>
     <script src="${logoutScriptUrl}"></script>
+    <script src="${postsScriptUrl}"></script>
 </head>
 <body>
 <div id="welcome-content" class="content">
