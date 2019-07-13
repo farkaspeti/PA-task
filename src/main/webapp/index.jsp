@@ -93,6 +93,9 @@
             <p>Email: <span id="user-email"></span></p>
         </div>
     </div>
+
+    <div id="newsfeed-content" class="hidden content modal">
+    </div>
 </div>
 </body>
 </html>
