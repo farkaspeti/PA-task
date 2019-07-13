@@ -11,7 +11,7 @@
     <c:url value="/scripts/index.js" var="indexScriptUrl"/>
     <c:url value="/scripts/login.js" var="loginScriptUrl"/>
     <c:url value="/scripts/profile.js" var="profileScriptUrl"/>
-    <c:url value="/scripts/signUp.js" var="signUpScriptUrl"/>
+    <c:url value="/scripts/signup.js" var="signUpScriptUrl"/>
     <c:url value="/scripts/logout.js" var="logoutScriptUrl"/>
     <script src="${profileScriptUrl}"></script>
     <script src="${indexScriptUrl}"></script>
@@ -79,9 +79,9 @@
     <div class="topnavbar">
         <ul>
             <li><a id="logout-a"><i class="fa fa-unlink"></i>Logout</a></li>
-            <li><a class="active" href="#home"><i class="fa fa-fw fa-home"></i>Home</a></li>
+            <li><a class="active" id="post-a"><i class="fa fa-sticky-note-o"></i>Posts</a></li>
             <li><a id="profile-a"><i class="fa fa-fw fa-user"></i>Profile</a></li>
-            <li><a href="#news"></a></li>
+            <li><a id="chat-a"><i class="fa fa-comments-o"></i>Chat</a></li>
         </ul>
     </div>
 
