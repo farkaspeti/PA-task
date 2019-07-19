@@ -43,6 +43,8 @@ function createPostsList(postsList) {
         buttonEl.setAttribute('post-id', postIdAttr);
         buttonEl.addEventListener('click', onLoadComments);
         ulEl.appendChild(buttonEl);
+        const pfillerEl = document.createElement("p");
+        ulEl.appendChild(pfillerEl);
     }
     return ulEl;
 }

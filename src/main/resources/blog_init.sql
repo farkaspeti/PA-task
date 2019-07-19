@@ -73,4 +73,13 @@ CREATE TRIGGER post_trigger
 
 
 INSERT INTO users(user_id,first_name,last_name,password,email,user_type) VALUES (0,'Péter','Farkas','admin123','admin@admin','ADMIN');
+INSERT INTO users(user_id,first_name,last_name,password,email,user_type) VALUES (1,'MyNameIss','User1','user123','user1@user1','USER');
+INSERT INTO users(user_id,first_name,last_name,password,email,user_type) VALUES (2,'MyNameIs','User2','user123','user2@user2','USER');
+
+
 INSERT INTO posts(post_id, user_id, first_name,last_name,content, post_date) VALUES (1,0,'Péter','Farkas','This is a test post','2019-07-15');
+INSERT INTO posts(post_id, user_id, first_name,last_name,content, post_date) VALUES (2,1,'MyNameIs','User1','This is my first post woa','2019-07-19');
+INSERT INTO posts(post_id, user_id, first_name,last_name,content, post_date) VALUES (3,1,'MyNameIs','User1','This is my second post lol','2019-07-19');
+INSERT INTO posts(post_id, user_id, first_name,last_name,content, post_date) VALUES (4,2,'MyNameIss','User2','Stop this please','2019-07-20');
+INSERT INTO posts(post_id, user_id, first_name,last_name,content, post_date) VALUES (5,1,'MyNameIs','User1','No thx','2019-07-20');
+INSERT INTO posts(post_id, user_id, first_name,last_name,content, post_date) VALUES (6,0,'Péter','Farkas','but you should','2019-07-21');

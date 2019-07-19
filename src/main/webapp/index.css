@@ -8,6 +8,15 @@ body {
     background-position-x: center;
     overflow: auto;
 }
+#post-wall button {
+    background-color: #2C666E;
+    color: #F0EDEE;
+    padding: 10px 5px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 25%;
+}
 
 div.topnavbar ul {
     list-style-type: none;
@@ -43,6 +52,10 @@ div.profile {
     margin-right: 5%;
 }
 
+#post-wall button {
+
+}
+
 input[type=text], input[type=password] {
     width: 80%;
     padding: 12px 20px;
@@ -60,21 +73,6 @@ button {
     cursor: pointer;
     width: 80%;
 }
-
-#div1 {
-    width: 50%;
-    float: left;
-}
-
-#div2 {
-    width: 50%;
-    float: right;
-}
-
-#schedules {
-    padding-left: 15%;
-}
-
 
 .show {
     display: block;
