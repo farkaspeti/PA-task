@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface PostService {
     
-    Post addPost(int userId, String content) throws SQLException, ServiceException;
+    Post addPost(int userId, String firstName, String lastName, String content) throws SQLException, ServiceException;
     
     List<Post> findAllByUserId(int userId) throws SQLException, ServiceException;
     
