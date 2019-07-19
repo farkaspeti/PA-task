@@ -3,7 +3,7 @@ function onLoginResponse() {
         const user = JSON.parse(this.responseText);
         setAuthorization(user);
         if (hasAuthorization()) {
-            showContents(['landing-content']);
+            showContents(['landing-content','post-wall']);
             onProfileLoad(getAuthorization());
             onLoadPosts();
         }

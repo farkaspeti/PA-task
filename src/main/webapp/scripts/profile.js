@@ -13,5 +13,5 @@ function onProfileAClicked() {
 }
 
 function onCloseProfileButtonClicked() {
-    showContents(['landing-content']);
+    showContents(['landing-content','post-wall']);
 }

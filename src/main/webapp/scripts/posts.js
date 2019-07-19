@@ -10,7 +10,10 @@ function onPostsReceived() {
     const text = this.responseText;
     const postsList = JSON.parse(text);
 
-    const divEl = document.getElementById('landing-content');
+   const divEl = document.getElementById('post-wall');
+    while (divEl.firstChild) {
+        divEl.removeChild(divEl.firstChild);
+    }
     divEl.appendChild(createPostsList(postsList));
 }
 
@@ -20,6 +23,9 @@ function createPostsList(postsList) {
     for (let i = 0; i < postsList.length; i++) {
         const post = postsList[i];
 
+        const strongEl = document.createElement('strong');
+        strongEl.appendChild(document.createTextNode(`${post.firstName} `));
+        strongEl.appendChild(document.createTextNode(`${post.lastName}`));
         const pEl = document.createElement('p');
         pEl.appendChild(document.createTextNode(`${post.content}`));
 
@@ -27,6 +33,7 @@ function createPostsList(postsList) {
 
         const liEl = document.createElement('li');
         liEl.setAttribute('id', postIdAttr)
+        liEl.appendChild(strongEl);
         liEl.appendChild(pEl);
 
         ulEl.appendChild(liEl);

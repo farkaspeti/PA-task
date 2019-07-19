@@ -97,6 +97,9 @@
             <p>Email: <span id="user-email"></span></p>
         </div>
     </div>
+
+    <div id="post-wall" class="hidden content">
+    </div>
 </div>
 </body>
 </html>

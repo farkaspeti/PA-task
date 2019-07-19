@@ -98,10 +98,6 @@ function onCloseToWelcomeClicked() {
     showContents(['welcome-content'])
 }
 
-function onCloseToLandingClicked() {
-    showContents(['landing-content'])
-}
-
 function onLoad() {
     loginContentDivEl = document.getElementById('login-content');
     profileContentDivEl = document.getElementById('profile-content');
@@ -125,7 +121,7 @@ function onLoad() {
     closeLoginButtonEl.addEventListener('click', onCloseToWelcomeClicked);
 
     const closeProfileButtonEl = document.getElementById('closeProfile-button');
-    closeProfileButtonEl.addEventListener('click', onCloseToLandingClicked);
+    closeProfileButtonEl.addEventListener('click', onCloseProfileButtonClicked);
 
     const closeSignUpButtonEl = document.getElementById('closeSignUp-button');
     closeSignUpButtonEl.addEventListener('click', onCloseToWelcomeClicked);
