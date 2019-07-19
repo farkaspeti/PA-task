@@ -1,7 +1,7 @@
 function onLoadPosts() {
     const xhr = new XMLHttpRequest();
     xhr.addEventListener('load', onPostsReceived);
-    xhr.open('GET','posts');
+    xhr.open('GET','protected/posts');
     xhr.send();
 
 }
@@ -10,10 +10,7 @@ function onPostsReceived() {
     const text = this.responseText;
     const postsList = JSON.parse(text);
 
-    const divEl = document.getElementById('newsfeed-content');
-    while (divEl.firstChild) {
-        divEl.removeChild(divEl.firstChild);
-    }
+    const divEl = document.getElementById('landing-content');
     divEl.appendChild(createPostsList(postsList));
 }
 
@@ -24,7 +21,7 @@ function createPostsList(postsList) {
         const post = postsList[i];
 
         const pEl = document.createElement('p');
-        pEl.appendChild(document.createTextNode(`:${post.content}`));
+        pEl.appendChild(document.createTextNode(`${post.content}`));
 
         const postIdAttr = post.id;
 

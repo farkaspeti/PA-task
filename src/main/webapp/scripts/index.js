@@ -7,6 +7,8 @@ const INTERNAL_SERVER_ERROR = 500;
 let loginContentDivEl;
 let profileContentDivEl;
 let signUpContentDivEl;
+let landingContentDivEl;
+let newsFeedContentDivEl;
 
 function newInfo(targetEl, message) {
     newMessage(targetEl, 'info', message);
@@ -104,6 +106,8 @@ function onLoad() {
     loginContentDivEl = document.getElementById('login-content');
     profileContentDivEl = document.getElementById('profile-content');
     signUpContentDivEl = document.getElementById('signUp-content');
+    landingContentDivEl = document.getElementById('landing-content');
+    newsFeedContentDivEl = document.getElementById('newsfeed-content');
 
     const loginButtonEl = document.getElementById('login-button');
     loginButtonEl.addEventListener('click', onLoginButtonClicked);

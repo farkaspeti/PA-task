@@ -14,12 +14,14 @@
     <c:url value="/scripts/signup.js" var="signUpScriptUrl"/>
     <c:url value="/scripts/logout.js" var="logoutScriptUrl"/>
     <c:url value="/scripts/posts.js" var="postsScriptUrl"/>
+    <c:url value="/scripts/comments.js" var="commentsScriptUrl"/>
     <script src="${profileScriptUrl}"></script>
     <script src="${indexScriptUrl}"></script>
     <script src="${loginScriptUrl}"></script>
     <script src="${signUpScriptUrl}"></script>
     <script src="${logoutScriptUrl}"></script>
     <script src="${postsScriptUrl}"></script>
+    <script src="${commentsScriptUrl}"></script>
 </head>
 <body>
 <div id="welcome-content" class="content">
@@ -78,10 +80,10 @@
 </div>
 
 <div id="landing-content" class="hidden content">
-    <div class="topnavbar">
+    <div id="topnav" class="topnavbar">
         <ul>
             <li><a id="logout-a"><i class="fa fa-unlink"></i>Logout</a></li>
-            <li><a class="active" id="post-a"><i class="fa fa-sticky-note-o"></i>Posts</a></li>
+            <li><a class="active" id="post-a"><i class="fa fa-sticky-note-o"></i>Your Posts</a></li>
             <li><a id="profile-a"><i class="fa fa-fw fa-user"></i>Profile</a></li>
             <li><a id="chat-a"><i class="fa fa-comments-o"></i>Chat</a></li>
         </ul>
@@ -94,9 +96,6 @@
             <p>FirstName: <span id="user-firstName"></span></p>
             <p>Email: <span id="user-email"></span></p>
         </div>
-    </div>
-
-    <div id="newsfeed-content" class="hidden content modal">
     </div>
 </div>
 </body>

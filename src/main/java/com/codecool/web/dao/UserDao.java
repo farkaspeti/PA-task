@@ -12,4 +12,6 @@ public interface UserDao {
     void add(String email, String password, String firstName, String lastName) throws SQLException;
     
     List<User> findAll() throws SQLException;
+    
+    
 }

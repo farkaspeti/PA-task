@@ -11,8 +11,8 @@ CREATE TYPE role AS ENUM('USER','ADMIN');
 
 CREATE TABLE users(
 	user_id SERIAL PRIMARY KEY,
-	first_name VARCHAR(30),
-	last_name VARCHAR(30),
+	first_name VARCHAR(30) UNIQUE,
+	last_name VARCHAR(30) UNIQUE,
 	password VARCHAR(60),
 	email VARCHAR(20),
 	user_type role
@@ -21,6 +21,8 @@ CREATE TABLE users(
 CREATE TABLE posts(
 	post_id SERIAL PRIMARY KEY,
 	user_id INT REFERENCES users(user_id),
+	first_name VARCHAR(30) REFERENCES users(first_name),
+	last_name VARCHAR(30) REFERENCES users(last_name),
 	content VARCHAR(300),
 	post_date date
 );
@@ -71,4 +73,4 @@ CREATE TRIGGER post_trigger
 
 
 INSERT INTO users(user_id,first_name,last_name,password,email,user_type) VALUES (0,'Péter','Farkas','admin123','admin@admin','ADMIN');
-
+INSERT INTO posts(post_id, user_id, first_name,last_name,content, post_date) VALUES (1,0,'Péter','Farkas','This is a test post','2019-07-15');

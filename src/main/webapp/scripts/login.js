@@ -5,7 +5,7 @@ function onLoginResponse() {
         if (hasAuthorization()) {
             showContents(['landing-content']);
             onProfileLoad(getAuthorization());
-
+            onLoadPosts();
         }
     }else if(this.status === UNAUTHORIZED){
         alert("Your email address or password was incorrect!");
