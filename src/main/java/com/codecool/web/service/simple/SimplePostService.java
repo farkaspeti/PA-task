@@ -17,9 +17,9 @@ public class SimplePostService implements PostService {
     }
     
     @Override
-    public Post addPost(int userId, String content) throws SQLException, ServiceException {
+    public Post addPost(int userId, String firstName, String lastName, String content) throws SQLException, ServiceException {
         try {
-            return postDao.add(userId, content);
+            return postDao.add(userId, firstName, lastName, content);
         } catch (IllegalArgumentException ex) {
             throw new ServiceException(ex.getMessage());
         }
