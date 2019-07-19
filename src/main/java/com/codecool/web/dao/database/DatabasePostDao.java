@@ -42,18 +42,20 @@ public class DatabasePostDao extends AbstractDao implements PostDao {
     }
     
     @Override
-    public Post add(int userId, String content) throws SQLException {
+    public Post add(int userId, String firstName, String lastName, String content) throws SQLException {
         java.util.Date date = new java.util.Date();
         Date postDate = new Date(date.getTime());
         boolean autoCommit = connection.getAutoCommit();
         connection.setAutoCommit(false);
-        String sql = "INSERT INTO posts (user_id, content) VALUES (?, ?)";
+        String sql = "INSERT INTO posts (user_id,first_name,last_name, content) VALUES (?, ?, ?, ?)";
         try (PreparedStatement preparedStatement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
             preparedStatement.setInt(1, userId);
-            preparedStatement.setString(2, content);
+            preparedStatement.setString(2, firstName);
+            preparedStatement.setString(3, lastName);
+            preparedStatement.setString(4, content);
             executeInsert(preparedStatement);
             int id = fetchGeneratedId(preparedStatement);
-            return new Post(id, userId, content, postDate);
+            return new Post(id, userId, firstName, lastName, content, postDate);
         } catch (SQLException ex) {
             connection.rollback();
             throw ex;
@@ -145,9 +147,11 @@ public class DatabasePostDao extends AbstractDao implements PostDao {
     private Post fetchPost(ResultSet resultSet) throws SQLException {
         int id = resultSet.getInt("post_id");
         int userId = resultSet.getInt("user_id");
+        String firstName = resultSet.getString("first_name");
+        String lastName = resultSet.getString("last_name");
         String content = resultSet.getString("content");
         Date postDate = resultSet.getDate("post_date");
-        return new Post(id, userId, content, postDate);
+        return new Post(id, userId, firstName, lastName, content, postDate);
     }
     
     private Integer fetchLabelIds(ResultSet resultSet) throws SQLException {
