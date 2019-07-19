@@ -11,7 +11,7 @@ public interface PostDao {
     
     Post findById(int postId) throws SQLException;
     
-    Post add(int userId, String content) throws SQLException;
+    Post add(int userId,String firstName, String lastName, String content) throws SQLException;
     
     void update(int postId, String content) throws SQLException;
     
