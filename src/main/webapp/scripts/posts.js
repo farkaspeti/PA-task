@@ -49,7 +49,7 @@ function createPostsList(postsList) {
     return ulEl;
 }
 
-function newPostButtonClicked() {
+function onNewPostButtonClicked() {
     const newPostFormEl = document.forms['newPost-form'];
     const postContentEl = newPostFormEl.querySelector('input[name="postContent"]');
     const content = postContentEl.value;
@@ -65,7 +65,7 @@ function newPostButtonClicked() {
     params.append('userLastName', userLastName);
 
     const xhr = new XMLHttpRequest();
-    xhr.addEventListener('load', onNewPostResponse);
-    xhr.open('POST', 'schedules');
+    xhr.addEventListener('load', onLoadPosts);
+    xhr.open('POST', 'protected/posts');
     xhr.send(params);
 }

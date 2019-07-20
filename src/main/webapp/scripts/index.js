@@ -8,7 +8,7 @@ let loginContentDivEl;
 let profileContentDivEl;
 let signUpContentDivEl;
 let landingContentDivEl;
-let newsFeedContentDivEl;
+let postWallContentDivEl;
 
 function newInfo(targetEl, message) {
     newMessage(targetEl, 'info', message);
@@ -103,7 +103,7 @@ function onLoad() {
     profileContentDivEl = document.getElementById('profile-content');
     signUpContentDivEl = document.getElementById('signUp-content');
     landingContentDivEl = document.getElementById('landing-content');
-    newsFeedContentDivEl = document.getElementById('newsfeed-content');
+    postWallContentDivEl = document.getElementById('post-wall');
 
     const loginButtonEl = document.getElementById('login-button');
     loginButtonEl.addEventListener('click', onLoginButtonClicked);
@@ -131,6 +131,9 @@ function onLoad() {
 
     const profileAEl = document.getElementById('profile-a');
     profileAEl.addEventListener('click', onProfileAClicked);
+
+    const postCreatorButtonEl = document.getElementById('postCreator-button');
+    postCreatorButtonEl.addEventListener('click', onNewPostButtonClicked);
 
 
     if (hasAuthorization()) {

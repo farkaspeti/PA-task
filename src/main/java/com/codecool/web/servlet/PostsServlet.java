@@ -36,4 +36,25 @@ public class PostsServlet extends AbstractServlet {
             e.printStackTrace();
         }
     }
+    
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        resp.setContentType("text/html;charset=UTF-8");
+        try (Connection connection = getConnection(req.getServletContext())) {
+            PostDao postDao = new DatabasePostDao(connection);
+            PostService postService = new SimplePostService(postDao);
+            String content = req.getParameter("content");
+            String firstName = req.getParameter("userFirstName");
+            String lastName = req.getParameter("userLastName");
+            int userId = Integer.parseInt(req.getParameter("userId"));
+            Post newPost = postService.addPost(userId, firstName, lastName, content);
+            sendMessage(resp, HttpServletResponse.SC_OK, newPost);
+        } catch (SQLException e) {
+            sendMessage(resp, HttpServletResponse.SC_BAD_REQUEST, e.getMessage());
+            e.printStackTrace();
+        } catch (ServiceException e) {
+            sendMessage(resp, HttpServletResponse.SC_BAD_REQUEST, e.getMessage());
+            e.printStackTrace();
+        }
+    }
 }
