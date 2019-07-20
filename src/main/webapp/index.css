@@ -17,6 +17,15 @@ body {
     cursor: pointer;
     width: 25%;
 }
+#post-creator button {
+    background-color: #2C666E;
+    color: #F0EDEE;
+    padding: 10px 5px;
+    border: none;
+    cursor: pointer;
+    width: 25%;
+    margin-left: 3%;
+}
 
 div.topnavbar ul {
     list-style-type: none;

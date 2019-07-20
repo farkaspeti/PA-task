@@ -34,7 +34,7 @@
         <form accept-charset=utf-8 id="login-form" onsubmit="return false;" class="modal-content animate"
               action="/action_page.php">
             <div><span style="width: 2%; float: right" id="closeLogin-button" title="Close PopUp"
-                                            class="close">&times;</span>
+                       class="close">&times;</span>
                 <h4>
                     <input type="text" placeholder="Enter your email address" name="email" required>
                     <input type="password" placeholder="Enter Password" name="password" required>
@@ -97,7 +97,12 @@
             <p>Email: <span id="user-email"></span></p>
         </div>
     </div>
-
+    <div id="post-creator" class="hidden content">
+        <form accept-charset=utf-8 id='newPost-form' onsubmit="return false;">
+            <input type="text" placeholder="Share your thoughts :D" name="postContent">
+            <button id="postCreator-button" type="submit">Post IT</button>
+        </form>
+    </div>
     <div id="post-wall" class="hidden content">
     </div>
 </div>

@@ -83,3 +83,5 @@ INSERT INTO posts(post_id, user_id, first_name,last_name,content, post_date) VAL
 INSERT INTO posts(post_id, user_id, first_name,last_name,content, post_date) VALUES (4,2,'MyNameIss','User2','Stop this please','2019-07-20');
 INSERT INTO posts(post_id, user_id, first_name,last_name,content, post_date) VALUES (5,1,'MyNameIs','User1','No thx','2019-07-20');
 INSERT INTO posts(post_id, user_id, first_name,last_name,content, post_date) VALUES (6,0,'Péter','Farkas','but you should','2019-07-21');
+
+INSERT INTO comments(post_id, user_id, comment_text, comment_date) VALUES (1,0,'And its one of the finest','2019-07-21');

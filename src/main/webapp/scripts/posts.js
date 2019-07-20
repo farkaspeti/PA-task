@@ -48,3 +48,24 @@ function createPostsList(postsList) {
     }
     return ulEl;
 }
+
+function newPostButtonClicked() {
+    const newPostFormEl = document.forms['newPost-form'];
+    const postContentEl = newPostFormEl.querySelector('input[name="postContent"]');
+    const content = postContentEl.value;
+
+    const userId = getAuthorization().id;
+    const userFirstName = getAuthorization().firstName;
+    const userLastName = getAuthorization().lastName;
+
+    const params = new URLSearchParams();
+    params.append('content', content);
+    params.append('userId', userId);
+    params.append('userFirstName', userFirstName);
+    params.append('userLastName', userLastName);
+
+    const xhr = new XMLHttpRequest();
+    xhr.addEventListener('load', onNewPostResponse);
+    xhr.open('POST', 'schedules');
+    xhr.send(params);
+}
