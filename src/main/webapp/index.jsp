@@ -105,6 +105,19 @@
     </div>
     <div id="post-wall" class="hidden content">
     </div>
+    <div id="post-modify" class="hidden content">
+    </div>
+    <div id="postUpdate-content" class="hidden content modal">
+        <form accept-charset=utf-8 id='postUpdate-form' onsubmit="return false;" class="modal-content animate"
+              action="/action_page.php">
+            <div class="imgcontainer">
+                <span style="width: 2%; float: right" id="closeUpdate-button" title="Close PopUp" class="close">&times;</span>
+                <input name="postContent" type="text" required/>
+                <button id="updateButton">Update post</button>
+                <button id="deleteButton">Delete post</button>
+            </div>
+        </form>
+    </div>
 </div>
 </body>
 </html>

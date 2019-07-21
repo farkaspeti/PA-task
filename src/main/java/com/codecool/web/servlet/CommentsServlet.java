@@ -30,7 +30,7 @@ public class CommentsServlet extends AbstractServlet {
         try (Connection connection = getConnection(req.getServletContext())) {
             CommentDao commentDao = new DatabaseCommentDao(connection);
             CommentService commentService = new SimpleCommentService(commentDao);
-            int id = Integer.parseInt(req.getParameter("id"));
+            int id = Integer.parseInt(req.getParameter("postId"));
             List<Comment> commentList = commentService.findAllByPostId(id);
             sendMessage(resp, HttpServletResponse.SC_OK, commentList);
         } catch (SQLException e) {
