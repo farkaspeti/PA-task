@@ -9,7 +9,7 @@ function onProfileLoad(user) {
 }
 
 function onProfileAClicked() {
-    showContents(['profile-content','landing-content','post-wall']);
+    showContents(['profile-content','landing-content','post-wall','post-creator']);
 }
 
 function onCloseProfileButtonClicked() {

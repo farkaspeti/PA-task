@@ -3,7 +3,6 @@ function onLoadPosts() {
     xhr.addEventListener('load', onPostsReceived);
     xhr.open('GET','protected/posts');
     xhr.send();
-
 }
 
 function onPostsReceived() {
@@ -68,4 +67,12 @@ function onNewPostButtonClicked() {
     xhr.addEventListener('load', onLoadPosts);
     xhr.open('POST', 'protected/posts');
     xhr.send(params);
+}
+
+function onPostAClicked() {
+    showContents(['landing-content','post-modify'])
+    const xhr = new XMLHttpRequest();
+    xhr.addEventListener('load', onUpdatePostsReceived);
+    xhr.open('GET','protected/update_posts');
+    xhr.send();
 }

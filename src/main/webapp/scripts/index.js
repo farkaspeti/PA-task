@@ -132,6 +132,9 @@ function onLoad() {
     const profileAEl = document.getElementById('profile-a');
     profileAEl.addEventListener('click', onProfileAClicked);
 
+    const postAEl = document.getElementById('post-a');
+    postAEl.addEventListener('click',onPostAClicked);
+
     const postCreatorButtonEl = document.getElementById('postCreator-button');
     postCreatorButtonEl.addEventListener('click', onNewPostButtonClicked);
 
