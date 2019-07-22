@@ -70,9 +70,23 @@ function onNewPostButtonClicked() {
 }
 
 function onPostAClicked() {
+    const userId = getAuthorization().id;
+    const params = new URLSearchParams();
+    params.append('userId', userId);
     showContents(['landing-content','post-modify'])
     const xhr = new XMLHttpRequest();
     xhr.addEventListener('load', onUpdatePostsReceived);
     xhr.open('GET','protected/update_posts');
     xhr.send();
+}
+
+function onUpdatePostsReceived() {
+    const text = this.responseText;
+    const postsList = JSON.parse(text);
+
+    const divEl = document.getElementById('post-modify');
+    while (divEl.firstChild) {
+        divEl.removeChild(divEl.firstChild);
+    }
+    divEl.appendChild(createPostsList(postsList));
 }
