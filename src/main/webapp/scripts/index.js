@@ -9,6 +9,7 @@ let profileContentDivEl;
 let signUpContentDivEl;
 let landingContentDivEl;
 let postWallContentDivEl;
+let commentWallContentDivEl;
 
 function newInfo(targetEl, message) {
     newMessage(targetEl, 'info', message);
@@ -104,6 +105,7 @@ function onLoad() {
     signUpContentDivEl = document.getElementById('signUp-content');
     landingContentDivEl = document.getElementById('landing-content');
     postWallContentDivEl = document.getElementById('post-wall');
+    commentWallContentDivEl = document.getElementById('comment-wall');
 
     const loginButtonEl = document.getElementById('login-button');
     loginButtonEl.addEventListener('click', onLoginButtonClicked);
@@ -122,6 +124,9 @@ function onLoad() {
 
     const closeProfileButtonEl = document.getElementById('closeProfile-button');
     closeProfileButtonEl.addEventListener('click', onCloseProfileButtonClicked);
+
+    const closeCommentButtonEl = document.getElementById('closeComment-button');
+    closeCommentButtonEl.addEventListener('click', onCloseCommentButtonClicked);
 
     const closeSignUpButtonEl = document.getElementById('closeSignUp-button');
     closeSignUpButtonEl.addEventListener('click', onCloseToWelcomeClicked);

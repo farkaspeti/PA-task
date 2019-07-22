@@ -107,7 +107,12 @@
     </div>
     <div id="post-modify" class="hidden content">
     </div>
-    <div id="postUpdate-content" class="hidden content modal">
+    <div id="comment-wall" class="hidden content modal">
+        <div class="comment">
+            <p id="closeComment-button" class="close"><span>&times;</span></p>
+        </div>
+    </div>
+    <div id="postUpdate-content" class="hidden content">
         <form accept-charset=utf-8 id='postUpdate-form' onsubmit="return false;" class="modal-content animate"
               action="/action_page.php">
             <div class="imgcontainer">

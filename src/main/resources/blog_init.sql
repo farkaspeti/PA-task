@@ -78,11 +78,11 @@ INSERT INTO users(first_name,last_name,password,email,user_type) VALUES ('MyName
 
 
 
-INSERT INTO posts(user_id, first_name,last_name,content, post_date) VALUES (0,'Péter','Farkas','This is a test post','2019-07-15');
-INSERT INTO posts(user_id, first_name,last_name,content, post_date) VALUES (1,'MyNameIs','User1','This is my first post woa','2019-07-19');
-INSERT INTO posts(user_id, first_name,last_name,content, post_date) VALUES (1,'MyNameIs','User1','This is my second post lol','2019-07-19');
-INSERT INTO posts(user_id, first_name,last_name,content, post_date) VALUES (2,'MyNameIss','User2','Stop this please','2019-07-20');
-INSERT INTO posts(user_id, first_name,last_name,content, post_date) VALUES (1,'MyNameIs','User1','No thx','2019-07-20');
-INSERT INTO posts(user_id, first_name,last_name,content, post_date) VALUES (0,'Péter','Farkas','but you should','2019-07-21');
+INSERT INTO posts(user_id, first_name,last_name,content, post_date) VALUES (1,'Péter','Farkas','This is a test post','2019-07-15');
+INSERT INTO posts(user_id, first_name,last_name,content, post_date) VALUES (2,'MyNameIs','User1','This is my first post woa','2019-07-19');
+INSERT INTO posts(user_id, first_name,last_name,content, post_date) VALUES (2,'MyNameIs','User1','This is my second post lol','2019-07-19');
+INSERT INTO posts(user_id, first_name,last_name,content, post_date) VALUES (3,'MyNameIss','User2','Stop this please','2019-07-20');
+INSERT INTO posts(user_id, first_name,last_name,content, post_date) VALUES (2,'MyNameIs','User1','No thx','2019-07-20');
+INSERT INTO posts(user_id, first_name,last_name,content, post_date) VALUES (1,'Péter','Farkas','but you should','2019-07-21');
 
-INSERT INTO comments(post_id, user_id, comment_text, comment_date) VALUES (1,0,'And its one of the finest','2019-07-21');
+INSERT INTO comments(post_id, user_id, comment_text, comment_date) VALUES (1,1,'And its one of the finest','2019-07-21');

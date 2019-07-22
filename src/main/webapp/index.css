@@ -60,6 +60,11 @@ div.profile {
     margin-top: 10%;
     margin-right: 5%;
 }
+div.comment {
+    float: right;
+    margin-top: 10%;
+    margin-right: 5%;
+}
 
 #post-wall button {
 

@@ -40,6 +40,7 @@ function createPostsList(postsList) {
         const buttonEl = document.createElement('button');
         buttonEl.textContent = "View Comments";
         buttonEl.setAttribute('post-id', postIdAttr);
+        buttonEl.setAttribute('id', 'comment-button');
         buttonEl.addEventListener('click', onLoadComments);
         ulEl.appendChild(buttonEl);
         const pfillerEl = document.createElement("p");

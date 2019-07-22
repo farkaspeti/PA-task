@@ -21,7 +21,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 
-@WebServlet("/protected/comments")
+@WebServlet("/comments")
 public class CommentsServlet extends AbstractServlet {
     
     @Override
