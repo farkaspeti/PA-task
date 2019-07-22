@@ -47,8 +47,8 @@ public class PostsServlet extends AbstractServlet {
             String firstName = req.getParameter("userFirstName");
             String lastName = req.getParameter("userLastName");
             int userId = Integer.parseInt(req.getParameter("userId"));
-            Post newPost = postService.addPost(userId, firstName, lastName, content);
-            sendMessage(resp, HttpServletResponse.SC_OK, newPost);
+            postService.addPost(userId, firstName, lastName, content);
+            sendMessage(resp, HttpServletResponse.SC_OK,null);
         } catch (SQLException e) {
             sendMessage(resp, HttpServletResponse.SC_BAD_REQUEST, e.getMessage());
             e.printStackTrace();
