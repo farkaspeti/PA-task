@@ -77,7 +77,7 @@ function onPostAClicked() {
     showContents(['landing-content','post-modify'])
     const xhr = new XMLHttpRequest();
     xhr.addEventListener('load', onUpdatePostsReceived);
-    xhr.open('GET','protected/update_posts');
+    xhr.open('GET', 'update_posts?' + params.toString());
     xhr.send();
 }
 

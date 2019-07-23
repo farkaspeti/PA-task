@@ -17,6 +17,9 @@ function onCommentsReceived() {
     showContents(['comment-wall','landing-content','post-wall','post-creator']);
 
     const divEl = document.getElementById('comment-wall');
+    while (divEl.firstChild) {
+        divEl.removeChild(divEl.firstChild);
+    }
     divEl.appendChild(createCommentsList(commentsList));
 }
 
