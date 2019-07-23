@@ -117,7 +117,7 @@ function onUpdatePostButtonClicked() {
     params.append('postId', postId);
     const xhr = new XMLHttpRequest();
     xhr.addEventListener('load', onLoadPosts);
-    xhr.open('POST', '/update_posts');
+    xhr.open('POST', 'update_posts');
     xhr.send(params);
 }
 

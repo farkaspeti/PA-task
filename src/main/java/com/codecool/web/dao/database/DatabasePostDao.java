@@ -67,15 +67,13 @@ public class DatabasePostDao extends AbstractDao implements PostDao {
     
     @Override
     public void update(int postId, String content) throws SQLException {
-        java.util.Date date = new java.util.Date();
-        Date postDate = new Date(date.getTime());
         String newContent;
         Post actualPost = findById(postId);
-        Post newPost = new Post(-1, -1, actualPost.getFirstName(), actualPost.getLastName(), content, postDate);
+        Post newPost = new Post(actualPost.getId(), actualPost.getUserId(), actualPost.getFirstName(), actualPost.getLastName(), content, actualPost.getPostDate());
         if (actualPost.getContent().equals(newPost.getContent())) {
-            newContent = content;
-        } else {
             newContent = newPost.getContent();
+        } else {
+            newContent = content;
         }
         boolean autoCommit = connection.getAutoCommit();
         connection.setAutoCommit(false);

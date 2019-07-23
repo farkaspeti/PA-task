@@ -40,20 +40,13 @@ public class UpdatePostServlet extends AbstractServlet {
     }
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        java.util.Date date = new java.util.Date();
-        Date postDate = new Date(date.getTime());
         resp.setContentType("text/html;charset=UTF-8");
         try (Connection connection = getConnection(req.getServletContext())) {
             PostDao postDao = new DatabasePostDao(connection);
             PostService postService = new SimplePostService(postDao);
-            int postId = Integer.valueOf(req.getParameter("PostId"));
+            int postId = Integer.valueOf(req.getParameter("postId"));
             String content = req.getParameter("content");
             postService.updatePost(postId, content);
-            User user = (User) req.getSession().getAttribute("user");
-            int userId = user.getId();
-            String firstName = user.getFirstName();
-            String lastName = user.getLastName();
-            new Post(postId, userId, firstName, lastName, content, postDate);
             sendMessage(resp, HttpServletResponse.SC_OK,null);
         } catch (SQLException ex) {
             sendMessage(resp, HttpServletResponse.SC_BAD_REQUEST, ex.getMessage());
