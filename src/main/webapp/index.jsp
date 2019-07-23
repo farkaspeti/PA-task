@@ -114,9 +114,9 @@
               action="/action_page.php">
             <div class="imgcontainer">
                 <span style="width: 2%; float: right" id="closeUpdate-button" title="Close PopUp" class="close">&times;</span>
-                <input name="postContent" type="text" required/>
-                <button id="updateButton">Update post</button>
-                <button id="deleteButton">Delete post</button>
+                <input name="postUpdateContent" type="text" required/>
+                <button style="width: 25%" id="updateButton">Update post</button>
+                <button style="width: 25%" id="deleteButton">Delete post</button>
             </div>
         </form>
     </div>

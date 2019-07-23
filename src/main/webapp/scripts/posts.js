@@ -73,6 +73,7 @@ function createUpdatePostsList(postsList) {
         const buttonEl = document.createElement('button');
         buttonEl.textContent = "Update or Delete";
         buttonEl.setAttribute('post-id', postIdAttr);
+        buttonEl.setAttribute('content',`${post.content}`);
         buttonEl.setAttribute('id', 'updatePost-button');
         buttonEl.addEventListener('click', onUpdatePostsClicked);
         ulEl.appendChild(buttonEl);
@@ -103,6 +104,36 @@ function onNewPostButtonClicked() {
     xhr.send(params);
 }
 
+function onUpdatePostButtonClicked() {
+    const postId = this.getAttribute('post-id');
+    const newPostFormEl = document.forms['postUpdate-form'];
+    const postContentEl = newPostFormEl.querySelector('input[name="postUpdateContent"]');
+    const content = postContentEl.value;
+
+    const params = new URLSearchParams();
+    params.append('content', content);
+    params.append('postId', postId);
+
+    const xhr = new XMLHttpRequest();
+    xhr.addEventListener('load', onLoadPosts);
+    xhr.open('POST', 'update_posts');
+    xhr.send(params);
+}
+
+function onUpdatePostsClicked() {
+    const content = this.getAttribute('content')
+    showContents(['landing-content', 'postUpdate-content']);
+    const postUpdateFormEl = document.forms['postUpdate-form'];
+    const postContentEl = postUpdateFormEl.querySelector('input[name="postUpdateContent"]');
+    postContentEl.value = content;
+
+    const updateButtonEl = document.getElementById('updateButton');
+    updateButtonEl.addEventListener('click', onUpdatePostButtonClicked);
+
+    const deleteButtonEl = document.getElementById('deleteButton');
+    deleteButtonEl.addEventListener('click', onDeletePostClicked);
+}
+
 function onPostAClicked() {
     const userId = getAuthorization().id;
     const params = new URLSearchParams();
@@ -123,4 +154,21 @@ function onUpdatePostsReceived() {
         divEl.removeChild(divEl.firstChild);
     }
     divEl.appendChild(createUpdatePostsList(postsList));
+}
+
+function onClosePostUpdateClicked() {
+    showContents(['landing-content','post-wall','post-creator'])
+}
+
+function onDeletePostClicked() {
+    showContents(['landing-content','post-wall','post-creator']);
+    const postId = this.getAttribute('post-id');
+
+    const params = new URLSearchParams();
+    params.append('id', postId);
+    const xhr = new XMLHttpRequest();
+    xhr.addEventListener('load', onLoadPosts);
+    xhr.open('POST', 'delete_schedule');
+    xhr.send(params);
+
 }

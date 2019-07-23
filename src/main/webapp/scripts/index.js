@@ -128,6 +128,9 @@ function onLoad() {
     const closeSignUpButtonEl = document.getElementById('closeSignUp-button');
     closeSignUpButtonEl.addEventListener('click', onCloseToWelcomeClicked);
 
+    const closePostUpdateButtonEl = document.getElementById('closeUpdate-button');
+    closePostUpdateButtonEl.addEventListener('click', onClosePostUpdateClicked);
+
     const logoutAEl = document.getElementById('logout-a');
     logoutAEl.addEventListener('click', onLogoutAClicked);
 
