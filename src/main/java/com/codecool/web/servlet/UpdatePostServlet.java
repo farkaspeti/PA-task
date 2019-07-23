@@ -53,7 +53,8 @@ public class UpdatePostServlet extends AbstractServlet {
             int userId = user.getId();
             String firstName = user.getFirstName();
             String lastName = user.getLastName();
-            sendMessage(resp, HttpServletResponse.SC_OK, new Post(postId, userId, firstName, lastName, content, postDate));
+            new Post(postId, userId, firstName, lastName, content, postDate);
+            sendMessage(resp, HttpServletResponse.SC_OK,null);
         } catch (SQLException ex) {
             sendMessage(resp, HttpServletResponse.SC_BAD_REQUEST, ex.getMessage());
             ex.getMessage();

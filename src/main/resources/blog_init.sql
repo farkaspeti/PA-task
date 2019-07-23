@@ -20,17 +20,17 @@ CREATE TABLE users(
 
 CREATE TABLE posts(
 	post_id SERIAL PRIMARY KEY,
-	user_id INT REFERENCES users(user_id),
-	first_name VARCHAR(30) REFERENCES users(first_name),
-	last_name VARCHAR(30) REFERENCES users(last_name),
+	user_id INT REFERENCES users(user_id) ON DELETE CASCADE,
+	first_name VARCHAR(30) REFERENCES users(first_name) ON DELETE CASCADE,
+	last_name VARCHAR(30) REFERENCES users(last_name) ON DELETE CASCADE,
 	content VARCHAR(300),
 	post_date date
 );
 
 CREATE TABLE comments(
 	comment_id SERIAL PRIMARY KEY,
-	post_id INT REFERENCES posts(post_id),
-	user_id INT REFERENCES users(user_id),
+	post_id INT REFERENCES posts(post_id) ON DELETE CASCADE,
+	user_id INT REFERENCES users(user_id) ON DELETE CASCADE,
 	comment_text VARCHAR(300),
 	comment_date date
 );
@@ -49,13 +49,13 @@ CREATE TABLE messages_users(
 );
 
 CREATE TABLE labels_posts(
-	label_id INT REFERENCES labels(label_id),
-	post_id INT REFERENCES posts(post_id)
+	label_id INT REFERENCES labels(label_id) ON DELETE CASCADE,
+	post_id INT REFERENCES posts(post_id) ON DELETE CASCADE
 );
 
 CREATE TABLE posts_logs(
 	post_logs_id SERIAL PRIMARY KEY,
-	post_id INT REFERENCES posts(post_id),
+	post_id INT REFERENCES posts(post_id) ON DELETE CASCADE,
 	content VARCHAR(300)
 );
 
