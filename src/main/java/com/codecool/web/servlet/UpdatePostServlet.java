@@ -16,7 +16,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 
-@WebServlet("/protected/update_posts")
+@WebServlet("/update_posts")
 public class UpdatePostServlet extends AbstractServlet {
     
     @Override

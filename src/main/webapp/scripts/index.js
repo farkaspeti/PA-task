@@ -125,9 +125,6 @@ function onLoad() {
     const closeProfileButtonEl = document.getElementById('closeProfile-button');
     closeProfileButtonEl.addEventListener('click', onCloseProfileButtonClicked);
 
-    const closeCommentButtonEl = document.getElementById('closeComment-button');
-    closeCommentButtonEl.addEventListener('click', onCloseCommentButtonClicked);
-
     const closeSignUpButtonEl = document.getElementById('closeSignUp-button');
     closeSignUpButtonEl.addEventListener('click', onCloseToWelcomeClicked);
 

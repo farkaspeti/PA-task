@@ -49,6 +49,39 @@ function createPostsList(postsList) {
     return ulEl;
 }
 
+function createUpdatePostsList(postsList) {
+    const ulEl = document.createElement('ul');
+
+    for (let i = 0; i < postsList.length; i++) {
+        const post = postsList[i];
+
+        const strongEl = document.createElement('strong');
+        strongEl.appendChild(document.createTextNode(`${post.firstName} `));
+        strongEl.appendChild(document.createTextNode(`${post.lastName}`));
+        const pEl = document.createElement('p');
+        pEl.appendChild(document.createTextNode(`${post.content}`));
+
+        const postIdAttr = post.id;
+
+        const liEl = document.createElement('li');
+        liEl.setAttribute('id', postIdAttr)
+        liEl.appendChild(strongEl);
+        liEl.appendChild(pEl);
+
+        ulEl.appendChild(liEl);
+
+        const buttonEl = document.createElement('button');
+        buttonEl.textContent = "Update or Delete";
+        buttonEl.setAttribute('post-id', postIdAttr);
+        buttonEl.setAttribute('id', 'updatePost-button');
+        buttonEl.addEventListener('click', onUpdatePostsClicked);
+        ulEl.appendChild(buttonEl);
+        const pfillerEl = document.createElement("p");
+        ulEl.appendChild(pfillerEl);
+    }
+    return ulEl;
+}
+
 function onNewPostButtonClicked() {
     const newPostFormEl = document.forms['newPost-form'];
     const postContentEl = newPostFormEl.querySelector('input[name="postContent"]');
@@ -89,5 +122,5 @@ function onUpdatePostsReceived() {
     while (divEl.firstChild) {
         divEl.removeChild(divEl.firstChild);
     }
-    divEl.appendChild(createPostsList(postsList));
+    divEl.appendChild(createUpdatePostsList(postsList));
 }
