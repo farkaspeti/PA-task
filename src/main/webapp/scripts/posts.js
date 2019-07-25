@@ -1,7 +1,7 @@
 function onLoadPosts() {
     const xhr = new XMLHttpRequest();
     xhr.addEventListener('load', onPostsReceived);
-    xhr.open('GET','protected/posts');
+    xhr.open('GET', 'protected/posts');
     xhr.send();
 }
 
@@ -9,7 +9,7 @@ function onPostsReceived() {
     const text = this.responseText;
     const postsList = JSON.parse(text);
 
-   const divEl = document.getElementById('post-wall');
+    const divEl = document.getElementById('post-wall');
     while (divEl.firstChild) {
         divEl.removeChild(divEl.firstChild);
     }
@@ -72,8 +72,8 @@ function createUpdatePostsList(postsList) {
 
         const buttonEl = document.createElement('button');
         buttonEl.textContent = "Update or Delete";
-        buttonEl.setAttribute('post-id',`${post.id}`);
-        buttonEl.setAttribute('content',`${post.content}`);
+        buttonEl.setAttribute('post-id', `${post.id}`);
+        buttonEl.setAttribute('content', `${post.content}`);
         buttonEl.setAttribute('id', 'updatePost-button');
         buttonEl.addEventListener('click', onUpdatePostsClicked);
         ulEl.appendChild(buttonEl);
@@ -105,7 +105,7 @@ function onNewPostButtonClicked() {
 }
 
 function onUpdatePostButtonClicked() {
-    showContents(['landing-content','post-wall','post-creator']);
+    showContents(['landing-content', 'post-wall', 'post-creator']);
     const divEl = document.getElementById("postUpdate-content");
     const postId = divEl.dataset.postId;
     const newPostFormEl = document.forms['postUpdate-form'];
@@ -140,32 +140,46 @@ function onUpdatePostsClicked() {
 
 function onPostAClicked() {
     const userId = getAuthorization().id;
+    const userType = getAuthorization().userType;
     const params = new URLSearchParams();
     params.append('userId', userId);
-    showContents(['landing-content','post-modify'])
-    const xhr = new XMLHttpRequest();
-    xhr.addEventListener('load', onUpdatePostsReceived);
-    xhr.open('GET', 'update_posts?' + params.toString());
-    xhr.send();
+    showContents(['landing-content', 'post-modify'])
+    if (userType === "ADMIN") {
+        const xhr = new XMLHttpRequest();
+        xhr.addEventListener('load', onUpdatePostsReceived);
+        xhr.open('GET', 'update_posts?' + params.toString());
+        xhr.send();
+
+    } else {
+        const xhr = new XMLHttpRequest();
+        xhr.addEventListener('load', onUpdatePostsReceived);
+        xhr.open('GET', 'update_posts?' + params.toString());
+        xhr.send();
+    }
 }
 
 function onUpdatePostsReceived() {
     const text = this.responseText;
+    const userType = getAuthorization().userType;
     const postsList = JSON.parse(text);
 
     const divEl = document.getElementById('post-modify');
     while (divEl.firstChild) {
         divEl.removeChild(divEl.firstChild);
     }
-    divEl.appendChild(createUpdatePostsList(postsList));
+    if (userType === "ADMIN") {
+        divEl.appendChild(createAdminUpdatePostsList(postList));
+    } else {
+        divEl.appendChild(createUpdatePostsList(postsList));
+    }
 }
 
 function onClosePostUpdateClicked() {
-    showContents(['landing-content','post-wall','post-creator'])
+    showContents(['landing-content', 'post-wall', 'post-creator'])
 }
 
 function onDeletePostClicked() {
-    showContents(['landing-content','post-wall','post-creator']);
+    showContents(['landing-content', 'post-wall', 'post-creator']);
     const divEl = document.getElementById("postUpdate-content");
     const postId = divEl.dataset.postId;
     const params = new URLSearchParams();
