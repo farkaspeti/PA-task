@@ -95,6 +95,7 @@
             <p>LastName: <span id="user-lastName"></span></p>
             <p>FirstName: <span id="user-firstName"></span></p>
             <p>Email: <span id="user-email"></span></p>
+            <p>User Type: <span id="user-type"></span></p>
         </div>
     </div>
     <div id="post-creator" class="hidden content">
